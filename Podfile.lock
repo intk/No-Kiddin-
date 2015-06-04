@@ -1,0 +1,10 @@
+PODS:
+  - MPMoviePlayerController-Subtitles (1.0.4)
+
+DEPENDENCIES:
+  - MPMoviePlayerController-Subtitles
+
+SPEC CHECKSUMS:
+  MPMoviePlayerController-Subtitles: dc717d1173ea64bb0ff3670a379fa7f8d06f96fa
+
+COCOAPODS: 0.37.0.beta.1
