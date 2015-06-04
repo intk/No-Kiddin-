@@ -30,6 +30,7 @@ class KidsViewController: UIViewController, UICollectionViewDataSource, UICollec
         collectionViewLayout = KidsCollectionViewLayout()
         
         collectionView = KidsAnimatableCollectionView(frame: CGRectZero, collectionViewLayout: collectionViewLayout!)
+        collectionView!.backgroundColor = UIColor.whiteColor()
         collectionView!.dataSource = self
         collectionView!.delegate = self
         collectionView!.registerClass(KidCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "Cell")
@@ -50,8 +51,6 @@ class KidsViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        
-//        collectionView!.stopAnimating()
     }
     
     override func viewWillLayoutSubviews() {
@@ -97,7 +96,10 @@ class KidsViewController: UIViewController, UICollectionViewDataSource, UICollec
             
             if indexPath.item != _indexPath.item {
                 let cell = collectionView.cellForItemAtIndexPath(_indexPath)
-                cell!.alpha = 0.5
+                
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                    cell!.alpha = 0.1
+                })
             }
         }
     }
@@ -106,7 +108,10 @@ class KidsViewController: UIViewController, UICollectionViewDataSource, UICollec
         let indexPaths = collectionView.indexPathsForVisibleItems() as! Array<NSIndexPath>
         for var i = 0; i < indexPaths.count; i++ {
             let cell = collectionView.cellForItemAtIndexPath(indexPaths[i])
-            cell!.alpha = 1.0
+            
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                cell!.alpha = 1.0
+            })
         }
     }
     

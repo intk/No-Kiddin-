@@ -30,7 +30,7 @@ class FadeViewControllerTransition: NSObject, UIViewControllerAnimatedTransition
             fromViewController.view.userInteractionEnabled = false
             toViewController.view.alpha = 0.0
             
-            UIView.animateWithDuration(0.4, animations: { () -> Void in
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
                 toViewController.view.alpha = 1.0
             })
             
@@ -42,13 +42,16 @@ class FadeViewControllerTransition: NSObject, UIViewControllerAnimatedTransition
             toViewController.view.userInteractionEnabled = true
             toViewController.view.alpha = 0.0
             
-            UIApplication.sharedApplication().keyWindow!.addSubview(fromViewController.view)
-            UIApplication.sharedApplication().keyWindow!.addSubview(toViewController.view)
+            transitionContext.containerView().addSubview(fromViewController.view)
+            transitionContext.containerView().addSubview(toViewController.view)
             
-            UIView.animateWithDuration(0.4, delay: 0.0, options: .CurveLinear, animations: { () -> Void in
+            UIView.animateWithDuration(0.3, delay: 0.0, options: .CurveLinear, animations: { () -> Void in
                 toViewController.view.alpha = 1.0
             }, completion: { (finished) -> Void in
                 transitionContext.completeTransition(true)
+                
+                UIApplication.sharedApplication().keyWindow!.addSubview(fromViewController.view)
+                UIApplication.sharedApplication().keyWindow!.addSubview(toViewController.view)
             })
         }
     }

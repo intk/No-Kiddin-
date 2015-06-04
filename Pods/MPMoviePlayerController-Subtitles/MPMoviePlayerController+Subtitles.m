@@ -255,8 +255,8 @@ static NSString *const kText = @"kText";
 - (void)updateLabelConstraints {
     
     // Default
-    NSString *horizontal = @"H:|-(15)-[weakSubtitleLabel]-(15)-|";
-    NSString *vertical = @"V:[weakSubtitleLabel]-(15)-|";
+    NSString *horizontal = @"H:|-(35)-[weakSubtitleLabel]-(35)-|";
+    NSString *vertical = @"V:[weakSubtitleLabel]-(60)-|";
     
     UIView __weak *weakSubtitleLabel = self.subtitleLabel;
     NSDictionary *views = NSDictionaryOfVariableBindings(weakSubtitleLabel);
@@ -321,15 +321,10 @@ static NSString *const kText = @"kText";
                 self.subtitleLabel = [[UILabel alloc] init];
                 self.subtitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
                 self.subtitleLabel.backgroundColor = [UIColor clearColor];
-                self.subtitleLabel.font = [UIFont boldSystemFontOfSize:fontSize];
+                self.subtitleLabel.font = [UIFont fontWithName:@"Toekomst-Book" size:17.0];
                 self.subtitleLabel.textColor = [UIColor whiteColor];
                 self.subtitleLabel.numberOfLines = 0;
                 self.subtitleLabel.textAlignment = NSTextAlignmentCenter;
-                self.subtitleLabel.layer.shadowColor = [UIColor blackColor].CGColor;
-                self.subtitleLabel.layer.shadowOffset = CGSizeMake(6.0, 6.0);
-                self.subtitleLabel.layer.shadowOpacity = 0.9;
-                self.subtitleLabel.layer.shadowRadius = 4.0;
-                self.subtitleLabel.layer.shouldRasterize = YES;
                 self.subtitleLabel.layer.rasterizationScale = [[UIScreen mainScreen] scale];
                 [self.view addSubview:self.subtitleLabel];
                 

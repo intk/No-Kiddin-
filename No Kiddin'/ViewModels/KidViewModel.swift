@@ -66,7 +66,7 @@ class KidViewModel {
         items.append(roel)
         
         let nanne = Art()
-        nanne.name = "Andrzej Wroblewski, Dazenie do doskonalosci (ladders)"
+        nanne.name = "Andrzej Wroblewski, Dazenie do doskonalosci"
         nanne.tintColor = UIColor(rgba: "#adc0ff")
         nanne.kidName = "Nanne"
         items.append(nanne)

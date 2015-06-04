@@ -14,8 +14,8 @@ class DetailViewModel {
         viewController.playVideoFromUrl(model.videoUrl, withSubtitles: model.subtitlesPath)
         viewController.avatarImageView?.image = model.avatarImage
         
-        let defaultAttributes = [NSFontAttributeName: UIFont(name: "Toekomst-Medium", size: 17.0)!]
-        let bookAttributes = [NSFontAttributeName: UIFont(name: "Toekomst-Book", size: 17.0)!]
+        let defaultAttributes = [NSFontAttributeName: UIFont(name: "Toekomst-Medium", size: 14.0)!]
+        let bookAttributes = [NSFontAttributeName: UIFont(name: "Toekomst-Book", size: 14.0)!, NSForegroundColorAttributeName: UIColor(white: 1, alpha: 0.5)]
         
         let attributedString = NSMutableAttributedString(string: "\(model.kidName!) over \(model.name!)", attributes: defaultAttributes)
         

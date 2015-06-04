@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>2D45D886-6AE4-4000-904D-1E77AF24B124</string>
+	<key>IDESourceControlProjectName</key>
+	<string>No Kiddin'</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B5100AF171AC49CAAD84EF910F51EC596F0232BF</key>
+		<string>https://github.com/intk/No-Kiddin-.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>No Kiddin'.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B5100AF171AC49CAAD84EF910F51EC596F0232BF</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/intk/No-Kiddin-.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B5100AF171AC49CAAD84EF910F51EC596F0232BF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B5100AF171AC49CAAD84EF910F51EC596F0232BF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>No%20Kiddin'</string>
+		</dict>
+	</array>
+</dict>
+</plist>

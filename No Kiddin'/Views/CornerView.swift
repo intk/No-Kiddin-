@@ -44,9 +44,11 @@ class CornerView: UIView {
         
         button = UIButton.buttonWithType(.Custom) as? UIButton
         button!.addTarget(self, action: Selector("buttonDidTouchDown"), forControlEvents: .TouchDown)
+        button!.addTarget(self, action: Selector("buttonDidTouchCancel"), forControlEvents: .TouchCancel)
         addSubview(button!)
-        
+
         iconView = UIImageView()
+        iconView!.contentMode = .Center
         iconView!.tintColor = UIColor(rgba: "#cccccc")
         addSubview(iconView!)
     }
@@ -65,7 +67,11 @@ class CornerView: UIView {
     }
     
     internal func buttonDidTouchDown() {
-        iconView?.tintColor = UIColor(rgba: "#eeeeee")
+//        iconView?.tintColor = UIColor(rgba: "#eeeeee")
+    }
+    
+    internal func buttonDidTouchCancel() {
+//        iconView?.tintColor = UIColor(rgba: "#cccccc")
     }
     
 }

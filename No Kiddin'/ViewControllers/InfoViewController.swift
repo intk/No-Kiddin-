@@ -12,6 +12,19 @@ class InfoViewController: UIViewController, UIViewControllerTransitioningDelegat
 
     private var cornerView: CornerView?
     
+    private var paragraphStyle: NSMutableParagraphStyle {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 7
+        return paragraphStyle
+    }
+    
+    private var textViewAttributes: [NSObject: AnyObject!] {
+        return [
+            NSFontAttributeName: UIFont(name: "Toekomst-Book", size: 14.0)!,
+            NSParagraphStyleAttributeName: paragraphStyle
+        ]
+    }
+    
     private var contentView: UIView?
     
     private var infoTitleLabel: UILabel?
@@ -19,6 +32,9 @@ class InfoViewController: UIViewController, UIViewControllerTransitioningDelegat
     
     private var summaryTitleLabel: UILabel?
     private var summaryTextView: UITextView?
+    
+    private var vanAbbeLogoView: UIImageView?
+    private var radboudLogoView: UIImageView?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -51,8 +67,10 @@ class InfoViewController: UIViewController, UIViewControllerTransitioningDelegat
         
         infoTextView = UITextView()
         infoTextView!.backgroundColor = UIColor.clearColor()
-        infoTextView!.font = UIFont(name: "Toekomst-Book", size: 14.0)
-        infoTextView!.text = "Children have a distinct way of looking; they see different things from adults, and often perceive striking connections and inspiring analogies that grown-ups miss. The museum aims to incorporates their way of seeing into an easy to use iPad app. Children and young people aged from 5 to 17 recount their reactions to the works of art. The older the works of art become, the older the children providing the commentary."
+        infoTextView!.editable = false
+        infoTextView!.attributedText = NSAttributedString(
+            string: "Children have a distinct way of looking; they see different things from adults, and often perceive striking connections and inspiring analogies that grown-ups miss. The museum aims to incorporates their way of seeing into an easy to use iPad app. Children and young people aged from 5 to 17 recount their reactions to the works of art. The older the works of art become, the older the children providing the commentary.",
+            attributes: textViewAttributes)
         infoTextView!.textColor = UIColor(rgba: "#999999")
         infoTextView!.scrollEnabled = false
         infoTextView!.textContainer.lineFragmentPadding = 0
@@ -68,13 +86,22 @@ class InfoViewController: UIViewController, UIViewControllerTransitioningDelegat
         summaryTextView = UITextView()
         summaryTextView!.backgroundColor = UIColor.clearColor()
         summaryTextView!.editable = false
-        summaryTextView!.font = UIFont(name: "Toekomst-Book", size: 14.0)
-        summaryTextView!.text = "Children have a distinct way of looking; they see different things from adults, and often perceive striking connections and inspiring analogies that grown-ups miss. "
+        summaryTextView!.attributedText = NSAttributedString(
+            string: "Children have a distinct way of looking; they see different things from adults, and often perceive striking connections and inspiring analogies that grown-ups miss. ",
+            attributes: textViewAttributes)
         summaryTextView!.textColor = UIColor(rgba: "#999999")
         summaryTextView!.scrollEnabled = false
         summaryTextView!.textContainer.lineFragmentPadding = 0
         summaryTextView!.textContainerInset = UIEdgeInsetsZero
         contentView!.addSubview(summaryTextView!)
+        
+        vanAbbeLogoView = UIImageView(image: UIImage(named: "VanAbbemuseum")!)
+        vanAbbeLogoView!.contentMode = .Left
+        contentView!.addSubview(vanAbbeLogoView!)
+        
+        radboudLogoView = UIImageView(image: UIImage(named: "RadboudUMC")!)
+        radboudLogoView!.contentMode = .Left
+        contentView!.addSubview(radboudLogoView!)
     }
     
     override func viewWillLayoutSubviews() {
@@ -85,12 +112,10 @@ class InfoViewController: UIViewController, UIViewControllerTransitioningDelegat
         let contentWidth: CGFloat = 370.0
         let labelHeight: CGFloat = 20.0
         let labelMargin: CGFloat = 20.0
+        let sectionMargin: CGFloat = 35.0
+        let logoViewHeight: CGFloat = 20
         
         infoTitleLabel?.frame = CGRect(x: 0, y: 0, width: contentWidth, height: labelHeight)
-        
-        let textViewAttributes = [
-            NSFontAttributeName: UIFont(name: "Toekomst-Book", size: 14.0)!
-        ]
         
         if let infoTextView = infoTextView {
             let infoText = infoTextView.text as NSString
@@ -100,7 +125,7 @@ class InfoViewController: UIViewController, UIViewControllerTransitioningDelegat
             infoTextView.frame = infoTextViewFrame
             
             if let summaryTitleLabel = summaryTitleLabel {
-                summaryTitleLabel.frame = CGRect(x: 0, y: infoTextViewFrame.origin.y + infoTextViewFrame.height + 80, width: contentWidth, height: labelHeight)
+                summaryTitleLabel.frame = CGRect(x: 0, y: infoTextViewFrame.origin.y + infoTextViewFrame.height + 35, width: contentWidth, height: labelHeight)
                 
                 if let summaryTextView = summaryTextView {
                     let summaryText = summaryTextView.text as NSString
@@ -108,11 +133,19 @@ class InfoViewController: UIViewController, UIViewControllerTransitioningDelegat
                     
                     summaryTextViewFrame.origin.y = summaryTitleLabel.frame.origin.y + labelHeight + labelMargin
                     summaryTextView.frame = summaryTextViewFrame
+                    
+                    if let vanAbbeLogoView = vanAbbeLogoView {
+                        vanAbbeLogoView.frame = CGRect(x: 0, y: summaryTextView.frame.origin.y + summaryTextView.frame.height + sectionMargin, width: contentWidth, height: logoViewHeight)
+                        
+                        if let radboudLogoView = radboudLogoView {
+                            radboudLogoView.frame = CGRect(x: 0, y: vanAbbeLogoView.frame.origin.y + vanAbbeLogoView.frame.height + sectionMargin, width: contentWidth, height: logoViewHeight)
+                        }
+                    }
                 }
             }
         }
         
-        let contentHeight = summaryTextView != nil ? summaryTextView!.frame.origin.y + summaryTextView!.frame.height : 0
+        let contentHeight = radboudLogoView != nil ? radboudLogoView!.frame.origin.y + radboudLogoView!.frame.height : 0
         contentView?.frame = CGRect(x: (view.frame.width / 2) - (contentWidth / 2), y: (view.frame.height / 2) - (contentHeight / 2), width: contentWidth, height: contentHeight)
     }
     

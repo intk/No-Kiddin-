@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A2681E271B20671900FA6C33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2681E261B20671900FA6C33 /* AppDelegate.swift */; };
-		A2681E2C1B20671900FA6C33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2681E2A1B20671900FA6C33 /* Main.storyboard */; };
 		A2681E2E1B20671900FA6C33 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2681E2D1B20671900FA6C33 /* Images.xcassets */; };
-		A2681E311B20671900FA6C33 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2681E2F1B20671900FA6C33 /* LaunchScreen.xib */; };
 		A2681E3D1B20671900FA6C33 /* No_Kiddin_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2681E3C1B20671900FA6C33 /* No_Kiddin_Tests.swift */; };
 		A2681E4D1B20676300FA6C33 /* CornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2681E4A1B20676300FA6C33 /* CornerView.swift */; };
 		A2681E4E1B20676300FA6C33 /* KidCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2681E4B1B20676300FA6C33 /* KidCollectionViewCell.swift */; };
@@ -39,6 +37,8 @@
 		A271A0941B20699C00351EB5 /* Puk.mov in Resources */ = {isa = PBXBuildFile; fileRef = A271A0861B20699C00351EB5 /* Puk.mov */; };
 		A271A0951B20699C00351EB5 /* Puk.srt in Resources */ = {isa = PBXBuildFile; fileRef = A271A0871B20699C00351EB5 /* Puk.srt */; };
 		A271A0961B20699C00351EB5 /* Roel.mov in Resources */ = {isa = PBXBuildFile; fileRef = A271A0881B20699C00351EB5 /* Roel.mov */; };
+		A2D550611B2070C8003DE371 /* toekomstbk-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2681E621B2067DF00FA6C33 /* toekomstbk-webfont.ttf */; };
+		A2D550621B2070C8003DE371 /* toekomstmd-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2681E631B2067DF00FA6C33 /* toekomstmd-webfont.ttf */; };
 		E5A9D192BE7C0B15B66225E9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E51000586C0E0F82BE8FF39 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -58,9 +58,7 @@
 		A2681E211B20671900FA6C33 /* No Kiddin'.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "No Kiddin'.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2681E251B20671900FA6C33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2681E261B20671900FA6C33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A2681E2B1B20671900FA6C33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A2681E2D1B20671900FA6C33 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		A2681E301B20671900FA6C33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		A2681E361B20671900FA6C33 /* No Kiddin'Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "No Kiddin'Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2681E3B1B20671900FA6C33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2681E3C1B20671900FA6C33 /* No_Kiddin_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = No_Kiddin_Tests.swift; sourceTree = "<group>"; };
@@ -157,9 +155,7 @@
 				A2681E471B20673300FA6C33 /* ViewControllers */,
 				A2681E5D1B2067C200FA6C33 /* Fonts */,
 				A2681E5A1B20677F00FA6C33 /* Media */,
-				A2681E2A1B20671900FA6C33 /* Main.storyboard */,
 				A2681E2D1B20671900FA6C33 /* Images.xcassets */,
-				A2681E2F1B20671900FA6C33 /* LaunchScreen.xib */,
 				A2681E241B20671900FA6C33 /* Supporting Files */,
 				A271A0771B2068E300351EB5 /* No Kiddin'-Bridging-Header.h */,
 			);
@@ -359,15 +355,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2D550611B2070C8003DE371 /* toekomstbk-webfont.ttf in Resources */,
+				A2D550621B2070C8003DE371 /* toekomstmd-webfont.ttf in Resources */,
 				A271A0941B20699C00351EB5 /* Puk.mov in Resources */,
 				A271A0921B20699C00351EB5 /* Nina.mov in Resources */,
 				A271A08E1B20699C00351EB5 /* Lieke.mov in Resources */,
 				A271A0901B20699C00351EB5 /* Mertcan.mov in Resources */,
 				A271A08C1B20699C00351EB5 /* Esmee.mov in Resources */,
 				A271A08F1B20699C00351EB5 /* Lola.mov in Resources */,
-				A2681E2C1B20671900FA6C33 /* Main.storyboard in Resources */,
 				A271A0911B20699C00351EB5 /* Nanne.mov in Resources */,
-				A2681E311B20671900FA6C33 /* LaunchScreen.xib in Resources */,
 				A271A0961B20699C00351EB5 /* Roel.mov in Resources */,
 				A271A0931B20699C00351EB5 /* Nora.mov in Resources */,
 				A2681E2E1B20671900FA6C33 /* Images.xcassets in Resources */,
@@ -460,25 +456,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		A2681E2A1B20671900FA6C33 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A2681E2B1B20671900FA6C33 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		A2681E2F1B20671900FA6C33 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A2681E301B20671900FA6C33 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		A2681E3E1B20671A00FA6C33 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -568,12 +545,15 @@
 			baseConfigurationReference = DA605AB77B9BDE7BF1EEE732 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "No Kiddin'/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "No Kiddin'/No Kiddin'-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -582,11 +562,14 @@
 			baseConfigurationReference = 803E2B9C82D1B0D58EA891B4 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "No Kiddin'/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "No Kiddin'/No Kiddin'-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

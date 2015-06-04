@@ -60,7 +60,7 @@ class DetailViewController: UIViewController, UIViewControllerTransitioningDeleg
         
         cornerView?.frame = CGRect(x: 0, y: 0, width: 74, height: 76)
         
-        titleLabel?.frame = CGRect(x: 75, y: 15, width: view.frame.width - 150 - 15, height: 60)
+        titleLabel?.frame = CGRect(x: 75, y: 15, width: view.frame.width - 150 - 20, height: 60)
         
         avatarImageView?.frame = CGRect(x: view.frame.width - 75, y: 15, width: 60, height: 60)
         avatarImageView?.layer.cornerRadius = 30.0

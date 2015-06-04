@@ -41,6 +41,12 @@ class KidCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+                
+        if bounds.width < bounds.height {
+            imageView?.image = model!.portraitImage
+        } else {
+            imageView?.image = model!.landscapeImage
+        }
         
         imageView?.frame = bounds
         tintView?.frame = CGRect(x: 20, y: 20, width: frame.width - 40, height: frame.height - 40)
