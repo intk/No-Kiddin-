@@ -89,30 +89,30 @@ class KidsViewController: UIViewController, UICollectionViewDataSource, UICollec
         presentViewController(DetailViewController(model: items[indexPath.item]), animated: true, completion: nil)
     }
     
-    func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
-        let indexPaths = collectionView.indexPathsForVisibleItems() as! Array<NSIndexPath>
-        for var i = 0; i < indexPaths.count; i++ {
-            let _indexPath = indexPaths[i]
-            
-            if indexPath.item != _indexPath.item {
-                let cell = collectionView.cellForItemAtIndexPath(_indexPath)
-                
-                UIView.animateWithDuration(0.3, animations: { () -> Void in
-                    cell!.alpha = 0.1
-                })
-            }
-        }
-    }
-    
-    func collectionView(collectionView: UICollectionView, didUnhighlightItemAtIndexPath indexPath: NSIndexPath) {
-        let indexPaths = collectionView.indexPathsForVisibleItems() as! Array<NSIndexPath>
-        for var i = 0; i < indexPaths.count; i++ {
-            let cell = collectionView.cellForItemAtIndexPath(indexPaths[i])
-            
-            UIView.animateWithDuration(0.3, animations: { () -> Void in
-                cell!.alpha = 1.0
-            })
-        }
-    }
+//    func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
+//        let indexPaths = collectionView.indexPathsForVisibleItems() as! Array<NSIndexPath>
+//        for var i = 0; i < indexPaths.count; i++ {
+//            let _indexPath = indexPaths[i]
+//            
+//            if indexPath.item != _indexPath.item {
+//                let cell = collectionView.cellForItemAtIndexPath(_indexPath)
+//                
+//                UIView.animateWithDuration(0.3, animations: { () -> Void in
+//                    cell!.alpha = 0.1
+//                })
+//            }
+//        }
+//    }
+//    
+//    func collectionView(collectionView: UICollectionView, didUnhighlightItemAtIndexPath indexPath: NSIndexPath) {
+//        let indexPaths = collectionView.indexPathsForVisibleItems() as! Array<NSIndexPath>
+//        for var i = 0; i < indexPaths.count; i++ {
+//            let cell = collectionView.cellForItemAtIndexPath(indexPaths[i])
+//            
+//            UIView.animateWithDuration(0.3, animations: { () -> Void in
+//                cell!.alpha = 1.0
+//            })
+//        }
+//    }
     
 }

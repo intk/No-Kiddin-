@@ -12,8 +12,8 @@ class KidCollectionViewCell: UICollectionViewCell {
     
     var model: Art? {
         didSet {
-            tintView?.layer.borderColor = model!.tintColor!.CGColor
-            imageView?.image = model?.portraitImage
+            tintView?.layer.borderColor = model!.kidTintColor!.CGColor
+            imageView?.image = model?.portraitKidImage
         }
     }
     
@@ -43,9 +43,9 @@ class KidCollectionViewCell: UICollectionViewCell {
         super.layoutSubviews()
                 
         if bounds.width < bounds.height {
-            imageView?.image = model!.portraitImage
+            imageView?.image = model!.portraitKidImage
         } else {
-            imageView?.image = model!.landscapeImage
+            imageView?.image = model!.landscapeKidImage
         }
         
         imageView?.frame = bounds

@@ -20,7 +20,7 @@ class InfoViewController: UIViewController, UIViewControllerTransitioningDelegat
     
     private var textViewAttributes: [NSObject: AnyObject!] {
         return [
-            NSFontAttributeName: UIFont(name: "Toekomst-Book", size: 14.0)!,
+            NSFontAttributeName: UIFont(name: "Toekomst-Book", size: 15.0)!,
             NSParagraphStyleAttributeName: paragraphStyle
         ]
     }
@@ -60,7 +60,7 @@ class InfoViewController: UIViewController, UIViewControllerTransitioningDelegat
         view.addSubview(contentView!)
         
         infoTitleLabel = UILabel()
-        infoTitleLabel!.font = UIFont(name: "Toekomst-Book", size: 14.0)
+        infoTitleLabel!.font = UIFont(name: "Toekomst-Book", size: 15.0)
         infoTitleLabel!.text = "Informatie over de app"
         infoTitleLabel!.textColor = UIColor(rgba: "#009CFF")
         contentView!.addSubview(infoTitleLabel!)
@@ -78,7 +78,7 @@ class InfoViewController: UIViewController, UIViewControllerTransitioningDelegat
         contentView!.addSubview(infoTextView!)
         
         summaryTitleLabel = UILabel()
-        summaryTitleLabel!.font = UIFont(name: "Toekomst-Book", size: 14.0)
+        summaryTitleLabel!.font = UIFont(name: "Toekomst-Book", size: 15.0)
         summaryTitleLabel!.text = "Samenwerking"
         summaryTitleLabel!.textColor = UIColor(rgba: "#009CFF")
         contentView!.addSubview(summaryTitleLabel!)

@@ -19,7 +19,7 @@ class DetailViewController: UIViewController, UIViewControllerTransitioningDeleg
     internal var titleLabel: UILabel?
     internal var avatarImageView: UIImageView?
     
-    private var moviePlayer: MPMoviePlayerController?
+    private var moviePlayer: MoviePlayerController?
     
     init(model: Art) {
         super.init(nibName: nil, bundle: nil)
@@ -66,10 +66,13 @@ class DetailViewController: UIViewController, UIViewControllerTransitioningDeleg
         avatarImageView?.layer.cornerRadius = 30.0
         
         moviePlayer?.view.frame = view.bounds
+        moviePlayer?.didSetFrame()
     }
     
     internal func playVideoFromUrl(url: NSURL) -> MPMoviePlayerController {
-        moviePlayer = MPMoviePlayerController(contentURL: url)
+        moviePlayer = MoviePlayerController(contentURL: url)
+        moviePlayer!.model = model!
+        
         view.addSubview(moviePlayer!.view)
         view.sendSubviewToBack(moviePlayer!.view)
         

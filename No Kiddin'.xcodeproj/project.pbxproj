@@ -24,7 +24,6 @@
 		A2681E671B20686000FA6C33 /* FadeViewControllerTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2681E651B20686000FA6C33 /* FadeViewControllerTransition.swift */; };
 		A271A0761B2068CC00351EB5 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A271A0751B2068CC00351EB5 /* MediaPlayer.framework */; };
 		A271A0891B20699C00351EB5 /* Bodil.mov in Resources */ = {isa = PBXBuildFile; fileRef = A271A07B1B20699C00351EB5 /* Bodil.mov */; };
-		A271A08A1B20699C00351EB5 /* Bodil.srt in Resources */ = {isa = PBXBuildFile; fileRef = A271A07C1B20699C00351EB5 /* Bodil.srt */; };
 		A271A08B1B20699C00351EB5 /* David.mov in Resources */ = {isa = PBXBuildFile; fileRef = A271A07D1B20699C00351EB5 /* David.mov */; };
 		A271A08C1B20699C00351EB5 /* Esmee.mov in Resources */ = {isa = PBXBuildFile; fileRef = A271A07E1B20699C00351EB5 /* Esmee.mov */; };
 		A271A08D1B20699C00351EB5 /* Jules.mov in Resources */ = {isa = PBXBuildFile; fileRef = A271A07F1B20699C00351EB5 /* Jules.mov */; };
@@ -35,10 +34,25 @@
 		A271A0921B20699C00351EB5 /* Nina.mov in Resources */ = {isa = PBXBuildFile; fileRef = A271A0841B20699C00351EB5 /* Nina.mov */; };
 		A271A0931B20699C00351EB5 /* Nora.mov in Resources */ = {isa = PBXBuildFile; fileRef = A271A0851B20699C00351EB5 /* Nora.mov */; };
 		A271A0941B20699C00351EB5 /* Puk.mov in Resources */ = {isa = PBXBuildFile; fileRef = A271A0861B20699C00351EB5 /* Puk.mov */; };
-		A271A0951B20699C00351EB5 /* Puk.srt in Resources */ = {isa = PBXBuildFile; fileRef = A271A0871B20699C00351EB5 /* Puk.srt */; };
 		A271A0961B20699C00351EB5 /* Roel.mov in Resources */ = {isa = PBXBuildFile; fileRef = A271A0881B20699C00351EB5 /* Roel.mov */; };
+		A274C3021B286BDB002A5F39 /* MoviePlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A274C3011B286BDB002A5F39 /* MoviePlayerController.swift */; };
 		A2D550611B2070C8003DE371 /* toekomstbk-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2681E621B2067DF00FA6C33 /* toekomstbk-webfont.ttf */; };
 		A2D550621B2070C8003DE371 /* toekomstmd-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2681E631B2067DF00FA6C33 /* toekomstmd-webfont.ttf */; };
+		A2DE58671B2AE605007446FC /* Bodil.srt in Resources */ = {isa = PBXBuildFile; fileRef = A2DE58581B2AE605007446FC /* Bodil.srt */; };
+		A2DE58681B2AE605007446FC /* David.srt in Resources */ = {isa = PBXBuildFile; fileRef = A2DE58591B2AE605007446FC /* David.srt */; };
+		A2DE58691B2AE605007446FC /* Esmee.srt in Resources */ = {isa = PBXBuildFile; fileRef = A2DE585A1B2AE605007446FC /* Esmee.srt */; };
+		A2DE586A1B2AE605007446FC /* Ires.srt in Resources */ = {isa = PBXBuildFile; fileRef = A2DE585B1B2AE605007446FC /* Ires.srt */; };
+		A2DE586B1B2AE605007446FC /* Isabel.srt in Resources */ = {isa = PBXBuildFile; fileRef = A2DE585C1B2AE605007446FC /* Isabel.srt */; };
+		A2DE586C1B2AE605007446FC /* Ivo.srt in Resources */ = {isa = PBXBuildFile; fileRef = A2DE585D1B2AE605007446FC /* Ivo.srt */; };
+		A2DE586D1B2AE605007446FC /* Jules.srt in Resources */ = {isa = PBXBuildFile; fileRef = A2DE585E1B2AE605007446FC /* Jules.srt */; };
+		A2DE586E1B2AE605007446FC /* Lieve.srt in Resources */ = {isa = PBXBuildFile; fileRef = A2DE585F1B2AE605007446FC /* Lieve.srt */; };
+		A2DE586F1B2AE605007446FC /* Lola.srt in Resources */ = {isa = PBXBuildFile; fileRef = A2DE58601B2AE605007446FC /* Lola.srt */; };
+		A2DE58701B2AE605007446FC /* Mertcan.srt in Resources */ = {isa = PBXBuildFile; fileRef = A2DE58611B2AE605007446FC /* Mertcan.srt */; };
+		A2DE58711B2AE605007446FC /* Nanne.srt in Resources */ = {isa = PBXBuildFile; fileRef = A2DE58621B2AE605007446FC /* Nanne.srt */; };
+		A2DE58721B2AE605007446FC /* Nina.srt in Resources */ = {isa = PBXBuildFile; fileRef = A2DE58631B2AE605007446FC /* Nina.srt */; };
+		A2DE58731B2AE605007446FC /* Nora.srt in Resources */ = {isa = PBXBuildFile; fileRef = A2DE58641B2AE605007446FC /* Nora.srt */; };
+		A2DE58741B2AE605007446FC /* Puk.srt in Resources */ = {isa = PBXBuildFile; fileRef = A2DE58651B2AE605007446FC /* Puk.srt */; };
+		A2DE58751B2AE605007446FC /* Roel.srt in Resources */ = {isa = PBXBuildFile; fileRef = A2DE58661B2AE605007446FC /* Roel.srt */; };
 		E5A9D192BE7C0B15B66225E9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E51000586C0E0F82BE8FF39 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -79,7 +93,6 @@
 		A271A0751B2068CC00351EB5 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		A271A0771B2068E300351EB5 /* No Kiddin'-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "No Kiddin'-Bridging-Header.h"; sourceTree = "<group>"; };
 		A271A07B1B20699C00351EB5 /* Bodil.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Bodil.mov; sourceTree = "<group>"; };
-		A271A07C1B20699C00351EB5 /* Bodil.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Bodil.srt; sourceTree = "<group>"; };
 		A271A07D1B20699C00351EB5 /* David.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = David.mov; sourceTree = "<group>"; };
 		A271A07E1B20699C00351EB5 /* Esmee.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Esmee.mov; sourceTree = "<group>"; };
 		A271A07F1B20699C00351EB5 /* Jules.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Jules.mov; sourceTree = "<group>"; };
@@ -90,8 +103,23 @@
 		A271A0841B20699C00351EB5 /* Nina.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Nina.mov; sourceTree = "<group>"; };
 		A271A0851B20699C00351EB5 /* Nora.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Nora.mov; sourceTree = "<group>"; };
 		A271A0861B20699C00351EB5 /* Puk.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Puk.mov; sourceTree = "<group>"; };
-		A271A0871B20699C00351EB5 /* Puk.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Puk.srt; sourceTree = "<group>"; };
 		A271A0881B20699C00351EB5 /* Roel.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Roel.mov; sourceTree = "<group>"; };
+		A274C3011B286BDB002A5F39 /* MoviePlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviePlayerController.swift; sourceTree = "<group>"; };
+		A2DE58581B2AE605007446FC /* Bodil.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Bodil.srt; sourceTree = "<group>"; };
+		A2DE58591B2AE605007446FC /* David.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = David.srt; sourceTree = "<group>"; };
+		A2DE585A1B2AE605007446FC /* Esmee.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Esmee.srt; sourceTree = "<group>"; };
+		A2DE585B1B2AE605007446FC /* Ires.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Ires.srt; sourceTree = "<group>"; };
+		A2DE585C1B2AE605007446FC /* Isabel.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Isabel.srt; sourceTree = "<group>"; };
+		A2DE585D1B2AE605007446FC /* Ivo.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Ivo.srt; sourceTree = "<group>"; };
+		A2DE585E1B2AE605007446FC /* Jules.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Jules.srt; sourceTree = "<group>"; };
+		A2DE585F1B2AE605007446FC /* Lieve.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Lieve.srt; sourceTree = "<group>"; };
+		A2DE58601B2AE605007446FC /* Lola.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Lola.srt; sourceTree = "<group>"; };
+		A2DE58611B2AE605007446FC /* Mertcan.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Mertcan.srt; sourceTree = "<group>"; };
+		A2DE58621B2AE605007446FC /* Nanne.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Nanne.srt; sourceTree = "<group>"; };
+		A2DE58631B2AE605007446FC /* Nina.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Nina.srt; sourceTree = "<group>"; };
+		A2DE58641B2AE605007446FC /* Nora.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Nora.srt; sourceTree = "<group>"; };
+		A2DE58651B2AE605007446FC /* Puk.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Puk.srt; sourceTree = "<group>"; };
+		A2DE58661B2AE605007446FC /* Roel.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Roel.srt; sourceTree = "<group>"; };
 		DA605AB77B9BDE7BF1EEE732 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -203,6 +231,7 @@
 				A2681E501B20676A00FA6C33 /* DetailViewController.swift */,
 				A2681E511B20676A00FA6C33 /* InfoViewController.swift */,
 				A2681E521B20676A00FA6C33 /* KidsViewController.swift */,
+				A274C3011B286BDB002A5F39 /* MoviePlayerController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -228,8 +257,22 @@
 		A2681E5A1B20677F00FA6C33 /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				A2DE58581B2AE605007446FC /* Bodil.srt */,
+				A2DE58591B2AE605007446FC /* David.srt */,
+				A2DE585A1B2AE605007446FC /* Esmee.srt */,
+				A2DE585B1B2AE605007446FC /* Ires.srt */,
+				A2DE585C1B2AE605007446FC /* Isabel.srt */,
+				A2DE585D1B2AE605007446FC /* Ivo.srt */,
+				A2DE585E1B2AE605007446FC /* Jules.srt */,
+				A2DE585F1B2AE605007446FC /* Lieve.srt */,
+				A2DE58601B2AE605007446FC /* Lola.srt */,
+				A2DE58611B2AE605007446FC /* Mertcan.srt */,
+				A2DE58621B2AE605007446FC /* Nanne.srt */,
+				A2DE58631B2AE605007446FC /* Nina.srt */,
+				A2DE58641B2AE605007446FC /* Nora.srt */,
+				A2DE58651B2AE605007446FC /* Puk.srt */,
+				A2DE58661B2AE605007446FC /* Roel.srt */,
 				A271A07B1B20699C00351EB5 /* Bodil.mov */,
-				A271A07C1B20699C00351EB5 /* Bodil.srt */,
 				A271A07D1B20699C00351EB5 /* David.mov */,
 				A271A07E1B20699C00351EB5 /* Esmee.mov */,
 				A271A07F1B20699C00351EB5 /* Jules.mov */,
@@ -240,7 +283,6 @@
 				A271A0841B20699C00351EB5 /* Nina.mov */,
 				A271A0851B20699C00351EB5 /* Nora.mov */,
 				A271A0861B20699C00351EB5 /* Puk.mov */,
-				A271A0871B20699C00351EB5 /* Puk.srt */,
 				A271A0881B20699C00351EB5 /* Roel.mov */,
 			);
 			path = Media;
@@ -357,21 +399,34 @@
 			files = (
 				A2D550611B2070C8003DE371 /* toekomstbk-webfont.ttf in Resources */,
 				A2D550621B2070C8003DE371 /* toekomstmd-webfont.ttf in Resources */,
+				A2DE58681B2AE605007446FC /* David.srt in Resources */,
+				A2DE58751B2AE605007446FC /* Roel.srt in Resources */,
+				A2DE58691B2AE605007446FC /* Esmee.srt in Resources */,
 				A271A0941B20699C00351EB5 /* Puk.mov in Resources */,
 				A271A0921B20699C00351EB5 /* Nina.mov in Resources */,
+				A2DE586A1B2AE605007446FC /* Ires.srt in Resources */,
+				A2DE58741B2AE605007446FC /* Puk.srt in Resources */,
 				A271A08E1B20699C00351EB5 /* Lieke.mov in Resources */,
 				A271A0901B20699C00351EB5 /* Mertcan.mov in Resources */,
 				A271A08C1B20699C00351EB5 /* Esmee.mov in Resources */,
+				A2DE58711B2AE605007446FC /* Nanne.srt in Resources */,
+				A2DE58731B2AE605007446FC /* Nora.srt in Resources */,
 				A271A08F1B20699C00351EB5 /* Lola.mov in Resources */,
 				A271A0911B20699C00351EB5 /* Nanne.mov in Resources */,
+				A2DE586E1B2AE605007446FC /* Lieve.srt in Resources */,
 				A271A0961B20699C00351EB5 /* Roel.mov in Resources */,
+				A2DE58671B2AE605007446FC /* Bodil.srt in Resources */,
+				A2DE586F1B2AE605007446FC /* Lola.srt in Resources */,
 				A271A0931B20699C00351EB5 /* Nora.mov in Resources */,
+				A2DE58721B2AE605007446FC /* Nina.srt in Resources */,
 				A2681E2E1B20671900FA6C33 /* Images.xcassets in Resources */,
 				A271A08D1B20699C00351EB5 /* Jules.mov in Resources */,
-				A271A08A1B20699C00351EB5 /* Bodil.srt in Resources */,
+				A2DE586B1B2AE605007446FC /* Isabel.srt in Resources */,
+				A2DE586C1B2AE605007446FC /* Ivo.srt in Resources */,
+				A2DE586D1B2AE605007446FC /* Jules.srt in Resources */,
 				A271A0891B20699C00351EB5 /* Bodil.mov in Resources */,
-				A271A0951B20699C00351EB5 /* Puk.srt in Resources */,
 				A271A08B1B20699C00351EB5 /* David.mov in Resources */,
+				A2DE58701B2AE605007446FC /* Mertcan.srt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +486,7 @@
 				A2681E531B20676A00FA6C33 /* DetailViewController.swift in Sources */,
 				A2681E271B20671900FA6C33 /* AppDelegate.swift in Sources */,
 				A2681E541B20676A00FA6C33 /* InfoViewController.swift in Sources */,
+				A274C3021B286BDB002A5F39 /* MoviePlayerController.swift in Sources */,
 				A2681E4D1B20676300FA6C33 /* CornerView.swift in Sources */,
 				A2681E581B20677400FA6C33 /* DetailViewModel.swift in Sources */,
 				A2681E591B20677400FA6C33 /* KidViewModel.swift in Sources */,

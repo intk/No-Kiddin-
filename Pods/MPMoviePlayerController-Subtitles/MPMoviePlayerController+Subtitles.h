@@ -15,6 +15,7 @@
 - (void)openSRTFileAtPath:(NSString *)localFile completion:(void (^)(BOOL finished))success failure:(void (^)(NSError *error))failure;
 - (void)showSubtitles;
 - (void)hideSubtitles;
+- (void)updateLabelConstraints;
 
 @end
 
