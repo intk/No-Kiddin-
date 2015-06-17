@@ -38,7 +38,10 @@ class Art {
     }
     
     internal var videoPath: String {
-        return NSBundle.mainBundle().pathForResource(kidName!, ofType: "mov")!
+        if let video = NSBundle.mainBundle().pathForResource(kidName!, ofType: "mov") {
+            return video
+        }
+        return NSBundle.mainBundle().pathForResource("Nora", ofType: "mov")!
     }
     
     internal var videoUrl: NSURL {

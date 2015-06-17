@@ -36,6 +36,7 @@
 		A271A0941B20699C00351EB5 /* Puk.mov in Resources */ = {isa = PBXBuildFile; fileRef = A271A0861B20699C00351EB5 /* Puk.mov */; };
 		A271A0961B20699C00351EB5 /* Roel.mov in Resources */ = {isa = PBXBuildFile; fileRef = A271A0881B20699C00351EB5 /* Roel.mov */; };
 		A274C3021B286BDB002A5F39 /* MoviePlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A274C3011B286BDB002A5F39 /* MoviePlayerController.swift */; };
+		A2898A7C1B2AED8400CA0E32 /* Lieke.srt in Resources */ = {isa = PBXBuildFile; fileRef = A2898A7B1B2AED8400CA0E32 /* Lieke.srt */; };
 		A2D550611B2070C8003DE371 /* toekomstbk-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2681E621B2067DF00FA6C33 /* toekomstbk-webfont.ttf */; };
 		A2D550621B2070C8003DE371 /* toekomstmd-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2681E631B2067DF00FA6C33 /* toekomstmd-webfont.ttf */; };
 		A2DE58671B2AE605007446FC /* Bodil.srt in Resources */ = {isa = PBXBuildFile; fileRef = A2DE58581B2AE605007446FC /* Bodil.srt */; };
@@ -105,6 +106,7 @@
 		A271A0861B20699C00351EB5 /* Puk.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Puk.mov; sourceTree = "<group>"; };
 		A271A0881B20699C00351EB5 /* Roel.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Roel.mov; sourceTree = "<group>"; };
 		A274C3011B286BDB002A5F39 /* MoviePlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviePlayerController.swift; sourceTree = "<group>"; };
+		A2898A7B1B2AED8400CA0E32 /* Lieke.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Lieke.srt; sourceTree = "<group>"; };
 		A2DE58581B2AE605007446FC /* Bodil.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Bodil.srt; sourceTree = "<group>"; };
 		A2DE58591B2AE605007446FC /* David.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = David.srt; sourceTree = "<group>"; };
 		A2DE585A1B2AE605007446FC /* Esmee.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Esmee.srt; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				A2DE58641B2AE605007446FC /* Nora.srt */,
 				A2DE58651B2AE605007446FC /* Puk.srt */,
 				A2DE58661B2AE605007446FC /* Roel.srt */,
+				A2898A7B1B2AED8400CA0E32 /* Lieke.srt */,
 				A271A07B1B20699C00351EB5 /* Bodil.mov */,
 				A271A07D1B20699C00351EB5 /* David.mov */,
 				A271A07E1B20699C00351EB5 /* Esmee.mov */,
@@ -398,6 +401,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2D550611B2070C8003DE371 /* toekomstbk-webfont.ttf in Resources */,
+				A2898A7C1B2AED8400CA0E32 /* Lieke.srt in Resources */,
 				A2D550621B2070C8003DE371 /* toekomstmd-webfont.ttf in Resources */,
 				A2DE58681B2AE605007446FC /* David.srt in Resources */,
 				A2DE58751B2AE605007446FC /* Roel.srt in Resources */,

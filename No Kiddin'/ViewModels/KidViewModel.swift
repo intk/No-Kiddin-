@@ -39,6 +39,7 @@ class KidViewModel {
         puk.name = "Allan McCollum, Plaster Surrogoles"
         puk.kidTintColor = UIColor(rgba: "#6c9f5d")
         puk.kidName = "Puk"
+        puk.displayMode = .Dark
         items.append(puk)
         
         let mertcan = Art()
@@ -75,6 +76,7 @@ class KidViewModel {
         esmee.name = "Karel Appel, A beast-drawn man"
         esmee.kidTintColor = UIColor(rgba: "#cd9fff")
         esmee.kidName = "Esmee"
+        esmee.displayMode = .Dark
         items.append(esmee)
         
         let nina = Art()
@@ -93,12 +95,14 @@ class KidViewModel {
         isabel.name = "Jan Sluijters, Landschap"
         isabel.kidTintColor = UIColor(rgba: "#64e389")
         isabel.kidName = "Isabel"
+        isabel.displayMode = .Dark
         items.append(isabel)
         
         let lieve = Art()
         lieve.name = "Jean Brusselmans, Le bains des vagabonds"
         lieve.kidTintColor = UIColor(rgba: "#c1c5c6")
         lieve.kidName = "Lieve"
+        lieve.displayMode = .Dark
         items.append(lieve)
         
         let ires = Art()
