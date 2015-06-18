@@ -7,6 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A239719A1B33035300F6611F /* Ivo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A239718B1B33035300F6611F /* Ivo.mp3 */; };
+		A239719B1B33035300F6611F /* Ires.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A239718C1B33035300F6611F /* Ires.mp3 */; };
+		A239719C1B33035300F6611F /* Lieve.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A239718D1B33035300F6611F /* Lieve.mp3 */; };
+		A239719D1B33035300F6611F /* Isabel.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A239718E1B33035300F6611F /* Isabel.mp3 */; };
+		A239719E1B33035300F6611F /* Lieke.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A239718F1B33035300F6611F /* Lieke.mp3 */; };
+		A239719F1B33035300F6611F /* Nina.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A23971901B33035300F6611F /* Nina.mp3 */; };
+		A23971A01B33035300F6611F /* Esmee.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A23971911B33035300F6611F /* Esmee.mp3 */; };
+		A23971A11B33035300F6611F /* Nanne.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A23971921B33035300F6611F /* Nanne.mp3 */; };
+		A23971A21B33035300F6611F /* Roel.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A23971931B33035300F6611F /* Roel.mp3 */; };
+		A23971A31B33035300F6611F /* David.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A23971941B33035300F6611F /* David.mp3 */; };
+		A23971A41B33035300F6611F /* Lola.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A23971951B33035300F6611F /* Lola.mp3 */; };
+		A23971A51B33035300F6611F /* Mertcan.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A23971961B33035300F6611F /* Mertcan.mp3 */; };
+		A23971A61B33035300F6611F /* Puk.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A23971971B33035300F6611F /* Puk.mp3 */; };
+		A23971A71B33035300F6611F /* Nora.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A23971981B33035300F6611F /* Nora.mp3 */; };
+		A23971A81B33035300F6611F /* Jules.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A23971991B33035300F6611F /* Jules.mp3 */; };
+		A23971AA1B33035B00F6611F /* Bodil.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A23971A91B33035B00F6611F /* Bodil.mp3 */; };
+		A23971AE1B33043300F6611F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23971AC1B33043300F6611F /* Fabric.framework */; };
+		A23971AF1B33043300F6611F /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23971AD1B33043300F6611F /* Crashlytics.framework */; };
 		A2681E271B20671900FA6C33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2681E261B20671900FA6C33 /* AppDelegate.swift */; };
 		A2681E2E1B20671900FA6C33 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2681E2D1B20671900FA6C33 /* Images.xcassets */; };
 		A2681E3D1B20671900FA6C33 /* No_Kiddin_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2681E3C1B20671900FA6C33 /* No_Kiddin_Tests.swift */; };
@@ -23,18 +41,6 @@
 		A2681E661B20686000FA6C33 /* Art.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2681E641B20686000FA6C33 /* Art.swift */; };
 		A2681E671B20686000FA6C33 /* FadeViewControllerTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2681E651B20686000FA6C33 /* FadeViewControllerTransition.swift */; };
 		A271A0761B2068CC00351EB5 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A271A0751B2068CC00351EB5 /* MediaPlayer.framework */; };
-		A271A0891B20699C00351EB5 /* Bodil.mov in Resources */ = {isa = PBXBuildFile; fileRef = A271A07B1B20699C00351EB5 /* Bodil.mov */; };
-		A271A08B1B20699C00351EB5 /* David.mov in Resources */ = {isa = PBXBuildFile; fileRef = A271A07D1B20699C00351EB5 /* David.mov */; };
-		A271A08C1B20699C00351EB5 /* Esmee.mov in Resources */ = {isa = PBXBuildFile; fileRef = A271A07E1B20699C00351EB5 /* Esmee.mov */; };
-		A271A08D1B20699C00351EB5 /* Jules.mov in Resources */ = {isa = PBXBuildFile; fileRef = A271A07F1B20699C00351EB5 /* Jules.mov */; };
-		A271A08E1B20699C00351EB5 /* Lieke.mov in Resources */ = {isa = PBXBuildFile; fileRef = A271A0801B20699C00351EB5 /* Lieke.mov */; };
-		A271A08F1B20699C00351EB5 /* Lola.mov in Resources */ = {isa = PBXBuildFile; fileRef = A271A0811B20699C00351EB5 /* Lola.mov */; };
-		A271A0901B20699C00351EB5 /* Mertcan.mov in Resources */ = {isa = PBXBuildFile; fileRef = A271A0821B20699C00351EB5 /* Mertcan.mov */; };
-		A271A0911B20699C00351EB5 /* Nanne.mov in Resources */ = {isa = PBXBuildFile; fileRef = A271A0831B20699C00351EB5 /* Nanne.mov */; };
-		A271A0921B20699C00351EB5 /* Nina.mov in Resources */ = {isa = PBXBuildFile; fileRef = A271A0841B20699C00351EB5 /* Nina.mov */; };
-		A271A0931B20699C00351EB5 /* Nora.mov in Resources */ = {isa = PBXBuildFile; fileRef = A271A0851B20699C00351EB5 /* Nora.mov */; };
-		A271A0941B20699C00351EB5 /* Puk.mov in Resources */ = {isa = PBXBuildFile; fileRef = A271A0861B20699C00351EB5 /* Puk.mov */; };
-		A271A0961B20699C00351EB5 /* Roel.mov in Resources */ = {isa = PBXBuildFile; fileRef = A271A0881B20699C00351EB5 /* Roel.mov */; };
 		A274C3021B286BDB002A5F39 /* MoviePlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A274C3011B286BDB002A5F39 /* MoviePlayerController.swift */; };
 		A2898A7C1B2AED8400CA0E32 /* Lieke.srt in Resources */ = {isa = PBXBuildFile; fileRef = A2898A7B1B2AED8400CA0E32 /* Lieke.srt */; };
 		A2D550611B2070C8003DE371 /* toekomstbk-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2681E621B2067DF00FA6C33 /* toekomstbk-webfont.ttf */; };
@@ -70,6 +76,24 @@
 /* Begin PBXFileReference section */
 		2E51000586C0E0F82BE8FF39 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		803E2B9C82D1B0D58EA891B4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		A239718B1B33035300F6611F /* Ivo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Ivo.mp3; sourceTree = "<group>"; };
+		A239718C1B33035300F6611F /* Ires.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Ires.mp3; sourceTree = "<group>"; };
+		A239718D1B33035300F6611F /* Lieve.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Lieve.mp3; sourceTree = "<group>"; };
+		A239718E1B33035300F6611F /* Isabel.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Isabel.mp3; sourceTree = "<group>"; };
+		A239718F1B33035300F6611F /* Lieke.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Lieke.mp3; sourceTree = "<group>"; };
+		A23971901B33035300F6611F /* Nina.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Nina.mp3; sourceTree = "<group>"; };
+		A23971911B33035300F6611F /* Esmee.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Esmee.mp3; sourceTree = "<group>"; };
+		A23971921B33035300F6611F /* Nanne.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Nanne.mp3; sourceTree = "<group>"; };
+		A23971931B33035300F6611F /* Roel.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Roel.mp3; sourceTree = "<group>"; };
+		A23971941B33035300F6611F /* David.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = David.mp3; sourceTree = "<group>"; };
+		A23971951B33035300F6611F /* Lola.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Lola.mp3; sourceTree = "<group>"; };
+		A23971961B33035300F6611F /* Mertcan.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Mertcan.mp3; sourceTree = "<group>"; };
+		A23971971B33035300F6611F /* Puk.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Puk.mp3; sourceTree = "<group>"; };
+		A23971981B33035300F6611F /* Nora.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Nora.mp3; sourceTree = "<group>"; };
+		A23971991B33035300F6611F /* Jules.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Jules.mp3; sourceTree = "<group>"; };
+		A23971A91B33035B00F6611F /* Bodil.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Bodil.mp3; sourceTree = "<group>"; };
+		A23971AC1B33043300F6611F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		A23971AD1B33043300F6611F /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		A2681E211B20671900FA6C33 /* No Kiddin'.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "No Kiddin'.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2681E251B20671900FA6C33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2681E261B20671900FA6C33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,18 +117,6 @@
 		A2681E651B20686000FA6C33 /* FadeViewControllerTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeViewControllerTransition.swift; sourceTree = "<group>"; };
 		A271A0751B2068CC00351EB5 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		A271A0771B2068E300351EB5 /* No Kiddin'-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "No Kiddin'-Bridging-Header.h"; sourceTree = "<group>"; };
-		A271A07B1B20699C00351EB5 /* Bodil.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Bodil.mov; sourceTree = "<group>"; };
-		A271A07D1B20699C00351EB5 /* David.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = David.mov; sourceTree = "<group>"; };
-		A271A07E1B20699C00351EB5 /* Esmee.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Esmee.mov; sourceTree = "<group>"; };
-		A271A07F1B20699C00351EB5 /* Jules.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Jules.mov; sourceTree = "<group>"; };
-		A271A0801B20699C00351EB5 /* Lieke.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Lieke.mov; sourceTree = "<group>"; };
-		A271A0811B20699C00351EB5 /* Lola.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Lola.mov; sourceTree = "<group>"; };
-		A271A0821B20699C00351EB5 /* Mertcan.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Mertcan.mov; sourceTree = "<group>"; };
-		A271A0831B20699C00351EB5 /* Nanne.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Nanne.mov; sourceTree = "<group>"; };
-		A271A0841B20699C00351EB5 /* Nina.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Nina.mov; sourceTree = "<group>"; };
-		A271A0851B20699C00351EB5 /* Nora.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Nora.mov; sourceTree = "<group>"; };
-		A271A0861B20699C00351EB5 /* Puk.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Puk.mov; sourceTree = "<group>"; };
-		A271A0881B20699C00351EB5 /* Roel.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Roel.mov; sourceTree = "<group>"; };
 		A274C3011B286BDB002A5F39 /* MoviePlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviePlayerController.swift; sourceTree = "<group>"; };
 		A2898A7B1B2AED8400CA0E32 /* Lieke.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Lieke.srt; sourceTree = "<group>"; };
 		A2DE58581B2AE605007446FC /* Bodil.srt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Bodil.srt; sourceTree = "<group>"; };
@@ -132,6 +144,8 @@
 			files = (
 				A271A0761B2068CC00351EB5 /* MediaPlayer.framework in Frameworks */,
 				E5A9D192BE7C0B15B66225E9 /* libPods.a in Frameworks */,
+				A23971AF1B33043300F6611F /* Crashlytics.framework in Frameworks */,
+				A23971AE1B33043300F6611F /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +192,8 @@
 			isa = PBXGroup;
 			children = (
 				A2681E261B20671900FA6C33 /* AppDelegate.swift */,
+				A23971AC1B33043300F6611F /* Fabric.framework */,
+				A23971AD1B33043300F6611F /* Crashlytics.framework */,
 				A2681E5C1B2067AC00FA6C33 /* Extensions */,
 				A2681E491B20674000FA6C33 /* Models */,
 				A2681E461B20672A00FA6C33 /* Views */,
@@ -259,6 +275,22 @@
 		A2681E5A1B20677F00FA6C33 /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				A23971A91B33035B00F6611F /* Bodil.mp3 */,
+				A239718B1B33035300F6611F /* Ivo.mp3 */,
+				A239718C1B33035300F6611F /* Ires.mp3 */,
+				A239718D1B33035300F6611F /* Lieve.mp3 */,
+				A239718E1B33035300F6611F /* Isabel.mp3 */,
+				A239718F1B33035300F6611F /* Lieke.mp3 */,
+				A23971901B33035300F6611F /* Nina.mp3 */,
+				A23971911B33035300F6611F /* Esmee.mp3 */,
+				A23971921B33035300F6611F /* Nanne.mp3 */,
+				A23971931B33035300F6611F /* Roel.mp3 */,
+				A23971941B33035300F6611F /* David.mp3 */,
+				A23971951B33035300F6611F /* Lola.mp3 */,
+				A23971961B33035300F6611F /* Mertcan.mp3 */,
+				A23971971B33035300F6611F /* Puk.mp3 */,
+				A23971981B33035300F6611F /* Nora.mp3 */,
+				A23971991B33035300F6611F /* Jules.mp3 */,
 				A2DE58581B2AE605007446FC /* Bodil.srt */,
 				A2DE58591B2AE605007446FC /* David.srt */,
 				A2DE585A1B2AE605007446FC /* Esmee.srt */,
@@ -275,18 +307,6 @@
 				A2DE58651B2AE605007446FC /* Puk.srt */,
 				A2DE58661B2AE605007446FC /* Roel.srt */,
 				A2898A7B1B2AED8400CA0E32 /* Lieke.srt */,
-				A271A07B1B20699C00351EB5 /* Bodil.mov */,
-				A271A07D1B20699C00351EB5 /* David.mov */,
-				A271A07E1B20699C00351EB5 /* Esmee.mov */,
-				A271A07F1B20699C00351EB5 /* Jules.mov */,
-				A271A0801B20699C00351EB5 /* Lieke.mov */,
-				A271A0811B20699C00351EB5 /* Lola.mov */,
-				A271A0821B20699C00351EB5 /* Mertcan.mov */,
-				A271A0831B20699C00351EB5 /* Nanne.mov */,
-				A271A0841B20699C00351EB5 /* Nina.mov */,
-				A271A0851B20699C00351EB5 /* Nora.mov */,
-				A271A0861B20699C00351EB5 /* Puk.mov */,
-				A271A0881B20699C00351EB5 /* Roel.mov */,
 			);
 			path = Media;
 			sourceTree = "<group>";
@@ -330,6 +350,7 @@
 				A2681E1E1B20671900FA6C33 /* Frameworks */,
 				A2681E1F1B20671900FA6C33 /* Resources */,
 				6F85EA094CE12D7653416D69 /* Copy Pods Resources */,
+				A23971AB1B33042000F6611F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -406,30 +427,34 @@
 				A2DE58681B2AE605007446FC /* David.srt in Resources */,
 				A2DE58751B2AE605007446FC /* Roel.srt in Resources */,
 				A2DE58691B2AE605007446FC /* Esmee.srt in Resources */,
-				A271A0941B20699C00351EB5 /* Puk.mov in Resources */,
-				A271A0921B20699C00351EB5 /* Nina.mov in Resources */,
+				A23971A41B33035300F6611F /* Lola.mp3 in Resources */,
+				A23971A61B33035300F6611F /* Puk.mp3 in Resources */,
+				A23971A11B33035300F6611F /* Nanne.mp3 in Resources */,
 				A2DE586A1B2AE605007446FC /* Ires.srt in Resources */,
+				A239719E1B33035300F6611F /* Lieke.mp3 in Resources */,
 				A2DE58741B2AE605007446FC /* Puk.srt in Resources */,
-				A271A08E1B20699C00351EB5 /* Lieke.mov in Resources */,
-				A271A0901B20699C00351EB5 /* Mertcan.mov in Resources */,
-				A271A08C1B20699C00351EB5 /* Esmee.mov in Resources */,
+				A23971A01B33035300F6611F /* Esmee.mp3 in Resources */,
+				A23971A51B33035300F6611F /* Mertcan.mp3 in Resources */,
 				A2DE58711B2AE605007446FC /* Nanne.srt in Resources */,
+				A23971A31B33035300F6611F /* David.mp3 in Resources */,
+				A239719F1B33035300F6611F /* Nina.mp3 in Resources */,
 				A2DE58731B2AE605007446FC /* Nora.srt in Resources */,
-				A271A08F1B20699C00351EB5 /* Lola.mov in Resources */,
-				A271A0911B20699C00351EB5 /* Nanne.mov in Resources */,
 				A2DE586E1B2AE605007446FC /* Lieve.srt in Resources */,
-				A271A0961B20699C00351EB5 /* Roel.mov in Resources */,
+				A23971A71B33035300F6611F /* Nora.mp3 in Resources */,
+				A239719A1B33035300F6611F /* Ivo.mp3 in Resources */,
 				A2DE58671B2AE605007446FC /* Bodil.srt in Resources */,
+				A23971A81B33035300F6611F /* Jules.mp3 in Resources */,
 				A2DE586F1B2AE605007446FC /* Lola.srt in Resources */,
-				A271A0931B20699C00351EB5 /* Nora.mov in Resources */,
 				A2DE58721B2AE605007446FC /* Nina.srt in Resources */,
 				A2681E2E1B20671900FA6C33 /* Images.xcassets in Resources */,
-				A271A08D1B20699C00351EB5 /* Jules.mov in Resources */,
 				A2DE586B1B2AE605007446FC /* Isabel.srt in Resources */,
+				A239719D1B33035300F6611F /* Isabel.mp3 in Resources */,
+				A23971A21B33035300F6611F /* Roel.mp3 in Resources */,
 				A2DE586C1B2AE605007446FC /* Ivo.srt in Resources */,
+				A23971AA1B33035B00F6611F /* Bodil.mp3 in Resources */,
 				A2DE586D1B2AE605007446FC /* Jules.srt in Resources */,
-				A271A0891B20699C00351EB5 /* Bodil.mov in Resources */,
-				A271A08B1B20699C00351EB5 /* David.mov in Resources */,
+				A239719C1B33035300F6611F /* Lieve.mp3 in Resources */,
+				A239719B1B33035300F6611F /* Ires.mp3 in Resources */,
 				A2DE58701B2AE605007446FC /* Mertcan.srt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -473,6 +498,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		A23971AB1B33042000F6611F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run ee7c4ce69ce69d996b6e6c5689b9b45970677c56 e485e3d549080e7ca90cf118076e343d37e25dcb241ee793b20592ade4e1baa2";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -607,6 +645,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/No",
+					"Kiddin'",
+				);
 				INFOPLIST_FILE = "No Kiddin'/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -624,6 +667,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/No",
+					"Kiddin'",
+				);
 				INFOPLIST_FILE = "No Kiddin'/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

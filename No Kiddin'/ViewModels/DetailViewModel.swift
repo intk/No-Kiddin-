@@ -11,7 +11,7 @@ import UIKit
 class DetailViewModel {
     
     init(viewController: DetailViewController, model: Art) {
-        viewController.playVideoFromUrl(model.videoUrl, withSubtitles: model.subtitlesPath)
+        viewController.playVideoFromUrl(model.audioUrl, withSubtitles: model.subtitlesPath)
         viewController.avatarImageView?.image = model.avatarImage
         
         let defaultAttributes = [NSFontAttributeName: UIFont(name: "Toekomst-Medium", size: 14.0)!]

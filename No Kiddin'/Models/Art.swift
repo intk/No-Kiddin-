@@ -37,6 +37,17 @@ class Art {
         return UIImage(named: "Nora-Art-Landscape")!
     }
     
+    internal var audioPath: String {
+        if let video = NSBundle.mainBundle().pathForResource(kidName!, ofType: "mp3") {
+            return video
+        }
+        return NSBundle.mainBundle().pathForResource("Bodil", ofType: "mp3")!
+    }
+    
+    internal var audioUrl: NSURL {
+        return NSURL(fileURLWithPath: audioPath)!
+    }
+    
     internal var videoPath: String {
         if let video = NSBundle.mainBundle().pathForResource(kidName!, ofType: "mov") {
             return video

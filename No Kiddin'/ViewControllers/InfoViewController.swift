@@ -50,7 +50,7 @@ class InfoViewController: UIViewController, UIViewControllerTransitioningDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(white: 1, alpha: 0.9)
+        view.backgroundColor = UIColor(white: 1, alpha: 0.95)
         
         cornerView = CornerView()
         cornerView!.cornerViewItem = CornerViewItem(target: self, selector: Selector("dismissViewController"), image: UIImage(named: "Cross")!)
