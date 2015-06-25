@@ -256,7 +256,7 @@ static NSString *const kText = @"kText";
     
     // Default
     NSString *horizontal = @"H:|-(35)-[weakSubtitleLabel]-(35)-|";
-    NSString *vertical = @"V:[weakSubtitleLabel]-(60)-|";
+    NSString *vertical = @"V:[weakSubtitleLabel]-(35)-|";
     
     UIView __weak *weakSubtitleLabel = self.subtitleLabel;
     NSDictionary *views = NSDictionaryOfVariableBindings(weakSubtitleLabel);
@@ -321,11 +321,16 @@ static NSString *const kText = @"kText";
                 self.subtitleLabel = [[UILabel alloc] init];
                 self.subtitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
                 self.subtitleLabel.backgroundColor = [UIColor clearColor];
-                self.subtitleLabel.font = [UIFont fontWithName:@"Toekomst-Book" size:17.0];
+                self.subtitleLabel.font = [UIFont fontWithName:@"Toekomst-Book" size:23.0];
                 self.subtitleLabel.textColor = [UIColor whiteColor];
                 self.subtitleLabel.numberOfLines = 0;
-                self.subtitleLabel.textAlignment = NSTextAlignmentCenter;
-                self.subtitleLabel.layer.rasterizationScale = [[UIScreen mainScreen] scale];
+                self.subtitleLabel.textAlignment = NSTextAlignmentCenter;                
+                
+                self.subtitleLabel.layer.shadowColor = [[UIColor blackColor] CGColor];
+                self.subtitleLabel.layer.shadowOffset = CGSizeMake(0, 1);
+                self.subtitleLabel.layer.shadowRadius = 5;
+                self.subtitleLabel.layer.shadowOpacity = 1;
+                
                 [self.view addSubview:self.subtitleLabel];
                 
                 // Update label constraints

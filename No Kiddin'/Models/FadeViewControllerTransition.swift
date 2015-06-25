@@ -30,9 +30,9 @@ class FadeViewControllerTransition: NSObject, UIViewControllerAnimatedTransition
             fromViewController.view.userInteractionEnabled = false
             toViewController.view.alpha = 0.0
             
-            UIView.animateWithDuration(0.3, animations: { () -> Void in
+            UIView.animateWithDuration(0.15, delay: 0.0, options: .CurveEaseOut, animations: { () -> Void in
                 toViewController.view.alpha = 1.0
-            })
+            }, completion: nil)
             
             transitionContext.containerView().addSubview(fromViewController.view)
             transitionContext.containerView().addSubview(toViewController.view)
@@ -45,7 +45,7 @@ class FadeViewControllerTransition: NSObject, UIViewControllerAnimatedTransition
             transitionContext.containerView().addSubview(fromViewController.view)
             transitionContext.containerView().addSubview(toViewController.view)
             
-            UIView.animateWithDuration(0.3, delay: 0.0, options: .CurveLinear, animations: { () -> Void in
+            UIView.animateWithDuration(0.15, delay: 0.0, options: .CurveEaseOut, animations: { () -> Void in
                 toViewController.view.alpha = 1.0
             }, completion: { (finished) -> Void in
                 transitionContext.completeTransition(true)

@@ -32,6 +32,7 @@ class KidCollectionViewCell: UICollectionViewCell {
         tintView = UIView()
         tintView!.layer.borderWidth = 5
         tintView!.alpha = 0
+        tintView!.userInteractionEnabled = false
         addSubview(tintView!)
     }
 

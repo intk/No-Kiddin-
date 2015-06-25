@@ -23,8 +23,6 @@
 		A23971A71B33035300F6611F /* Nora.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A23971981B33035300F6611F /* Nora.mp3 */; };
 		A23971A81B33035300F6611F /* Jules.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A23971991B33035300F6611F /* Jules.mp3 */; };
 		A23971AA1B33035B00F6611F /* Bodil.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A23971A91B33035B00F6611F /* Bodil.mp3 */; };
-		A23971AE1B33043300F6611F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23971AC1B33043300F6611F /* Fabric.framework */; };
-		A23971AF1B33043300F6611F /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23971AD1B33043300F6611F /* Crashlytics.framework */; };
 		A2681E271B20671900FA6C33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2681E261B20671900FA6C33 /* AppDelegate.swift */; };
 		A2681E2E1B20671900FA6C33 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2681E2D1B20671900FA6C33 /* Images.xcassets */; };
 		A2681E3D1B20671900FA6C33 /* No_Kiddin_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2681E3C1B20671900FA6C33 /* No_Kiddin_Tests.swift */; };
@@ -92,8 +90,6 @@
 		A23971981B33035300F6611F /* Nora.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Nora.mp3; sourceTree = "<group>"; };
 		A23971991B33035300F6611F /* Jules.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Jules.mp3; sourceTree = "<group>"; };
 		A23971A91B33035B00F6611F /* Bodil.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Bodil.mp3; sourceTree = "<group>"; };
-		A23971AC1B33043300F6611F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
-		A23971AD1B33043300F6611F /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		A2681E211B20671900FA6C33 /* No Kiddin'.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "No Kiddin'.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2681E251B20671900FA6C33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2681E261B20671900FA6C33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -144,8 +140,6 @@
 			files = (
 				A271A0761B2068CC00351EB5 /* MediaPlayer.framework in Frameworks */,
 				E5A9D192BE7C0B15B66225E9 /* libPods.a in Frameworks */,
-				A23971AF1B33043300F6611F /* Crashlytics.framework in Frameworks */,
-				A23971AE1B33043300F6611F /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,8 +186,6 @@
 			isa = PBXGroup;
 			children = (
 				A2681E261B20671900FA6C33 /* AppDelegate.swift */,
-				A23971AC1B33043300F6611F /* Fabric.framework */,
-				A23971AD1B33043300F6611F /* Crashlytics.framework */,
 				A2681E5C1B2067AC00FA6C33 /* Extensions */,
 				A2681E491B20674000FA6C33 /* Models */,
 				A2681E461B20672A00FA6C33 /* Views */,
