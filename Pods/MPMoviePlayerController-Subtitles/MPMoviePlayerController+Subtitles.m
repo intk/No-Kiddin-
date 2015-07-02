@@ -8,6 +8,7 @@
 
 #import "MPMoviePlayerController+Subtitles.h"
 #import <objc/runtime.h>
+#import "VALabel.h"
 
 static NSString *const kIndex = @"kIndex";
 static NSString *const kStart = @"kStart";
@@ -20,7 +21,7 @@ static NSString *const kText = @"kText";
 #pragma mark - Properties
 @property (strong, nonatomic) NSMutableDictionary *subtitlesParts;
 @property (strong, nonatomic) NSTimer *subtitleTimer;
-@property (strong, nonatomic) UILabel *subtitleLabel;
+@property (strong, nonatomic) VALabel *subtitleLabel;
 @property (strong, nonatomic) NSLayoutConstraint *heightConstraint;
 
 #pragma mark - Private methods
@@ -241,9 +242,6 @@ static NSString *const kText = @"kText";
         // Get text
         self.subtitleLabel.text = [lastFounded objectForKey:kText];
 
-        // Update label constraints
-        [self updateLabelConstraints];
-
     } else {
         
         self.subtitleLabel.text = @"";
@@ -252,34 +250,10 @@ static NSString *const kText = @"kText";
     
 }
 
-- (void)updateLabelConstraints {
-    
-    // Default
-    NSString *horizontal = @"H:|-(35)-[weakSubtitleLabel]-(35)-|";
-    NSString *vertical = @"V:[weakSubtitleLabel]-(35)-|";
-    
-    UIView __weak *weakSubtitleLabel = self.subtitleLabel;
-    NSDictionary *views = NSDictionaryOfVariableBindings(weakSubtitleLabel);
-    NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:horizontal
-                                                                   options:0
-                                                                   metrics:nil
-                                                                     views:views];
-    [self.subtitleLabel.superview addConstraints:constraints];
-    constraints = [NSLayoutConstraint constraintsWithVisualFormat:vertical
-                                                          options:0
-                                                          metrics:nil
-                                                            views:views];
-    [self.subtitleLabel.superview addConstraints:constraints];
-    
-    
-    CGRect bounds = [self.subtitleLabel.text boundingRectWithSize:CGSizeMake(CGRectGetWidth(self.subtitleLabel.bounds), CGFLOAT_MAX)
-                                                          options:NSStringDrawingUsesLineFragmentOrigin
-                                                       attributes:@{NSFontAttributeName : self.subtitleLabel.font}
-                                                          context:nil];
-    self.heightConstraint.constant = bounds.size.height + 10.0;
-
-    [self.subtitleLabel.superview layoutIfNeeded];
-    
+- (void)viewWillLayoutSubviews {
+    if (self.subtitleLabel) {
+        self.subtitleLabel.frame = CGRectMake(35, self.view.frame.size.height - 300 - 35, self.view.frame.size.width - 70, 300);
+    }
 }
 
 #pragma mark - Notifications
@@ -318,7 +292,7 @@ static NSString *const kText = @"kText";
                 } else {
                     fontSize = 20.0;
                 }
-                self.subtitleLabel = [[UILabel alloc] init];
+                self.subtitleLabel = [[VALabel alloc] init];
                 self.subtitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
                 self.subtitleLabel.backgroundColor = [UIColor clearColor];
                 self.subtitleLabel.font = [UIFont fontWithName:@"Toekomst-Book" size:23.0];
@@ -331,10 +305,12 @@ static NSString *const kText = @"kText";
                 self.subtitleLabel.layer.shadowRadius = 5;
                 self.subtitleLabel.layer.shadowOpacity = 1;
                 
+                self.subtitleLabel.verticalAlignment = UIControlContentVerticalAlignmentBottom;
+                                
                 [self.view addSubview:self.subtitleLabel];
                 
                 // Update label constraints
-                [self updateLabelConstraints];
+                [self viewWillLayoutSubviews];
                 
             }
             
@@ -367,10 +343,6 @@ static NSString *const kText = @"kText";
     
     // Show label
     self.subtitleLabel.hidden = NO;
-
-    // Update label constraints
-    [self updateLabelConstraints];
- 
 }
 
 - (void)willEnterFullscreen:(NSNotification *)notification {
@@ -384,10 +356,6 @@ static NSString *const kText = @"kText";
     }
     
     [window addSubview:self.subtitleLabel];
-    
-    // Update label constraints
-    [self updateLabelConstraints];
-
 }
 
 - (void)didEnterFullscreen:(NSNotification *)notification {
@@ -400,9 +368,6 @@ static NSString *const kText = @"kText";
 - (void)willExitFullscreen:(NSNotification *)notification {
     
     [self.view addSubview:self.subtitleLabel];
-    
-    // Update label constraints
-    [self updateLabelConstraints];
     
 }
 
@@ -437,13 +402,13 @@ static NSString *const kText = @"kText";
     
 }
 
-- (void)setSubtitleLabel:(UILabel *)subtitleLabel {
+- (void)setSubtitleLabel:(VALabel *)subtitleLabel {
     
     objc_setAssociatedObject(self, @"subtitleLabel", subtitleLabel, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     
 }
 
-- (UILabel *)subtitleLabel {
+- (VALabel *)subtitleLabel {
     
     return objc_getAssociatedObject(self, @"subtitleLabel");
     

@@ -66,7 +66,7 @@ class DetailViewController: UIViewController, UIViewControllerTransitioningDeleg
         avatarImageView?.layer.cornerRadius = 30.0
         
         moviePlayer?.view.frame = view.bounds
-        moviePlayer?.didSetFrame()
+        moviePlayer?.viewWillLayoutSubviews()
     }
     
     internal func playVideoFromUrl(url: NSURL) -> MPMoviePlayerController {

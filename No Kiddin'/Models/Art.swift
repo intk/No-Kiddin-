@@ -23,19 +23,19 @@ class Art {
     
     // MARK: - Getters
     
-    internal var portraitArtImage: UIImage {
-        if let image = UIImage(named: "\(kidName!)-Art") {
+    internal lazy var portraitArtImage: UIImage = {
+        if let image = UIImage(named: "\(self.kidName!)-Art") {
             return image
         }
         return UIImage(named: "Nora-Art")!
-    }
+    }()
     
-    internal var landscapeArtImage: UIImage {
-        if let image = UIImage(named: "\(kidName!)-Art-Landscape") {
+    internal lazy var landscapeArtImage: UIImage = {
+        if let image = UIImage(named: "\(self.kidName!)-Art-Landscape") {
             return image
         }
         return UIImage(named: "Nora-Art-Landscape")!
-    }
+    }()
     
     internal var audioPath: String {
         if let video = NSBundle.mainBundle().pathForResource(kidName!, ofType: "mp3") {
@@ -44,9 +44,9 @@ class Art {
         return NSBundle.mainBundle().pathForResource("Bodil", ofType: "mp3")!
     }
     
-    internal var audioUrl: NSURL {
-        return NSURL(fileURLWithPath: audioPath)!
-    }
+    internal lazy var audioUrl: NSURL = {
+        return NSURL(fileURLWithPath: self.audioPath)!
+    }()
     
     internal var videoPath: String {
         if let video = NSBundle.mainBundle().pathForResource(kidName!, ofType: "mov") {

@@ -11,6 +11,7 @@
 		0A286E6E41D593141CC6E79A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3669BB6D59075ECCB1A232 /* Foundation.framework */; };
 		1FE89ECDA87B459426C7CC12 /* MPMoviePlayerController+Subtitles.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DAA720A93AD64D0DB2D12BE /* MPMoviePlayerController+Subtitles.m */; };
 		2E6C64F8E686BA11396F4BFC /* MPMoviePlayerController+Subtitles.h in Headers */ = {isa = PBXBuildFile; fileRef = B37CFFC09C651098A23EE675 /* MPMoviePlayerController+Subtitles.h */; };
+		A28FBF7B1B42882B0009E355 /* VALabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A28FBF7A1B42882B0009E355 /* VALabel.m */; };
 		A937CBCEF9A42B572128A436 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A86D012B464A7F879484A6 /* Pods-dummy.m */; };
 		B30EBBB5E68E05CBED77FD70 /* Pods-MPMoviePlayerController-Subtitles-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4903D8AD65483662164D5A2D /* Pods-MPMoviePlayerController-Subtitles-dummy.m */; };
 /* End PBXBuildFile section */
@@ -38,6 +39,8 @@
 		9FCE2278B2CC77A3EE26209C /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A1A86D012B464A7F879484A6 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
 		A1EC09603D128BB33F6E6D23 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A28FBF791B42882B0009E355 /* VALabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VALabel.h; sourceTree = "<group>"; };
+		A28FBF7A1B42882B0009E355 /* VALabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VALabel.m; sourceTree = "<group>"; };
 		A868D64F7F8E32C0D9F2E7DF /* Pods-MPMoviePlayerController-Subtitles.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MPMoviePlayerController-Subtitles.xcconfig"; sourceTree = "<group>"; };
 		B37CFFC09C651098A23EE675 /* MPMoviePlayerController+Subtitles.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MPMoviePlayerController+Subtitles.h"; sourceTree = "<group>"; };
 		C18B6F9ED0C6371ED6BBA079 /* Pods-MPMoviePlayerController-Subtitles-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MPMoviePlayerController-Subtitles-Private.xcconfig"; sourceTree = "<group>"; };
@@ -142,6 +145,8 @@
 				B37CFFC09C651098A23EE675 /* MPMoviePlayerController+Subtitles.h */,
 				7DAA720A93AD64D0DB2D12BE /* MPMoviePlayerController+Subtitles.m */,
 				67C71393CB683A54F4FA97B7 /* Support Files */,
+				A28FBF791B42882B0009E355 /* VALabel.h */,
+				A28FBF7A1B42882B0009E355 /* VALabel.m */,
 			);
 			path = "MPMoviePlayerController-Subtitles";
 			sourceTree = "<group>";
@@ -242,6 +247,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A28FBF7B1B42882B0009E355 /* VALabel.m in Sources */,
 				A937CBCEF9A42B572128A436 /* Pods-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

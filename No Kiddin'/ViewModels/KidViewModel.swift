@@ -80,7 +80,7 @@ class KidViewModel {
         items.append(esmee)
         
         let nina = Art()
-        nina.name = "Ad Snijders, zelportret II"
+        nina.name = "Ad Snijders, zelfportret II"
         nina.kidTintColor = UIColor(rgba: "#da759e")
         nina.kidName = "Nina"
         items.append(nina)

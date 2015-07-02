@@ -38,12 +38,14 @@ class MoviePlayerController: MPMoviePlayerController {
         view.addSubview(displayAdjustmentView!)
     }
     
-    internal func didSetFrame() {
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
 //        overlayImageView?.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height - 44)
         overlayImageView?.frame = view.bounds
         displayAdjustmentView?.frame = view.bounds
         
         loadImage()
+        
     }
     
     private func loadImage() {

@@ -640,6 +640,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/No",
+					Kiddin,
+					"$(PROJECT_DIR)/No",
 					"Kiddin'",
 				);
 				INFOPLIST_FILE = "No Kiddin'/Info.plist";
@@ -661,6 +663,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/No",
+					Kiddin,
 					"$(PROJECT_DIR)/No",
 					"Kiddin'",
 				);

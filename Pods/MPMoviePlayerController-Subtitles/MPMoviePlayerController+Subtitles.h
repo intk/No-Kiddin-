@@ -17,5 +17,7 @@
 - (void)hideSubtitles;
 - (void)updateLabelConstraints;
 
+- (void)viewWillLayoutSubviews;
+
 @end
 
