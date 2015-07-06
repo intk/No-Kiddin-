@@ -98,6 +98,10 @@ class DetailViewController: UIViewController, UIViewControllerTransitioningDeleg
     }
     
     internal func moviePlayerDidFinish(notification: NSNotification) {
+        // Remove reference to prevent memory leak
+        moviePlayer = nil
+        
+        // Dismiss ViewController after 2 minutes
         NSTimer.scheduledTimerWithTimeInterval(120.0, target: self, selector: Selector("dismissViewController"), userInfo: nil, repeats: false)
     }
     
