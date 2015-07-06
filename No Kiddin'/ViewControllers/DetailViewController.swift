@@ -78,6 +78,10 @@ class DetailViewController: UIViewController, UIViewControllerTransitioningDeleg
         
         moviePlayer!.play()
         
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.removeObserver(self, name: MPMoviePlayerPlaybackDidFinishNotification, object: moviePlayer!)
+        notificationCenter.addObserver(self, selector: Selector("moviePlayerDidFinish:"), name: MPMoviePlayerPlaybackDidFinishNotification, object: moviePlayer!)
+        
         return moviePlayer!
     }
     
@@ -91,6 +95,10 @@ class DetailViewController: UIViewController, UIViewControllerTransitioningDeleg
         }
         
         return moviePlayer
+    }
+    
+    internal func moviePlayerDidFinish(notification: NSNotification) {
+        NSTimer.scheduledTimerWithTimeInterval(120.0, target: self, selector: Selector("dismissViewController"), userInfo: nil, repeats: false)
     }
     
     internal func dismissViewController() {
