@@ -72,6 +72,7 @@ class DetailViewController: UIViewController, UIViewControllerTransitioningDeleg
     internal func playVideoFromUrl(url: NSURL) -> MPMoviePlayerController {
         moviePlayer = MoviePlayerController(contentURL: url)
         moviePlayer!.model = model!
+        moviePlayer!.movieSourceType = MPMovieSourceType.Unknown
         
         view.addSubview(moviePlayer!.view)
         view.sendSubviewToBack(moviePlayer!.view)
@@ -98,15 +99,18 @@ class DetailViewController: UIViewController, UIViewControllerTransitioningDeleg
     }
     
     internal func moviePlayerDidFinish(notification: NSNotification) {
-        // Remove reference to prevent memory leak
-        moviePlayer = nil
-        
         // Dismiss ViewController after 2 minutes
         NSTimer.scheduledTimerWithTimeInterval(120.0, target: self, selector: Selector("dismissViewController"), userInfo: nil, repeats: false)
     }
     
     internal func dismissViewController() {
-        moviePlayer?.stop()
+        if let moviePlayer = moviePlayer {
+            NSNotificationCenter.defaultCenter().removeObserver(self, name: MPMoviePlayerPlaybackDidFinishNotification, object: moviePlayer)
+            moviePlayer.stop()
+            moviePlayer.view.removeFromSuperview()
+        }
+        
+        moviePlayer = nil
         dismissViewControllerAnimated(true, completion: nil)
     }
     
