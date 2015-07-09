@@ -68,6 +68,7 @@ class InfoViewController: UIViewController, UIViewControllerTransitioningDelegat
         infoTextView = UITextView()
         infoTextView!.backgroundColor = UIColor.clearColor()
         infoTextView!.editable = false
+        infoTextView!.selectable = false
         infoTextView!.attributedText = NSAttributedString(
             string: "Children have a distinct way of looking; they see different things from adults, and often perceive striking connections and inspiring analogies that grown-ups miss. The museum aims to incorporates their way of seeing into an easy to use iPad app. Children and young people aged from 5 to 17 recount their reactions to the works of art. The older the works of art become, the older the children providing the commentary.",
             attributes: textViewAttributes)
@@ -86,6 +87,7 @@ class InfoViewController: UIViewController, UIViewControllerTransitioningDelegat
         summaryTextView = UITextView()
         summaryTextView!.backgroundColor = UIColor.clearColor()
         summaryTextView!.editable = false
+        summaryTextView!.selectable = false
         summaryTextView!.attributedText = NSAttributedString(
             string: "Children have a distinct way of looking; they see different things from adults, and often perceive striking connections and inspiring analogies that grown-ups miss. ",
             attributes: textViewAttributes)

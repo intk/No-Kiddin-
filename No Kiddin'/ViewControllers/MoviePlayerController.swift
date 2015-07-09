@@ -40,7 +40,7 @@ class MoviePlayerController: MPMoviePlayerController, UIScrollViewDelegate {
         overlayImageView = UIImageView()
         overlayImageView!.backgroundColor = UIColor.clearColor()
         overlayImageView!.clipsToBounds = true
-        overlayImageView!.contentMode = UIViewContentMode.ScaleAspectFit
+        overlayImageView!.contentMode = .ScaleAspectFit
         overlayScrollView!.addSubview(overlayImageView!)
         
         displayAdjustmentView = UIView()
@@ -67,7 +67,7 @@ class MoviePlayerController: MPMoviePlayerController, UIScrollViewDelegate {
         return overlayImageView
     }
     
-    func scrollViewDidZoom(scrollView: UIScrollView) {
+    internal func scrollViewDidZoom(scrollView: UIScrollView) {
         var top: CGFloat = 0.0
         var left: CGFloat = 0.0
         

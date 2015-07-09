@@ -107,10 +107,8 @@ class DetailViewController: UIViewController, UIViewControllerTransitioningDeleg
         if let moviePlayer = moviePlayer {
             NSNotificationCenter.defaultCenter().removeObserver(self, name: MPMoviePlayerPlaybackDidFinishNotification, object: moviePlayer)
             moviePlayer.stop()
-            moviePlayer.view.removeFromSuperview()
         }
         
-        moviePlayer = nil
         dismissViewControllerAnimated(true, completion: nil)
     }
     
