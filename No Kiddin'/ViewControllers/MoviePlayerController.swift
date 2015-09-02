@@ -8,16 +8,29 @@
 
 import MediaPlayer
 
-class MoviePlayerController: MPMoviePlayerController, UIScrollViewDelegate {
+class MoviePlayerController: MPMoviePlayerController, JCTileSource, UIScrollViewDelegate {
     
-    private var overlayScrollView: UIScrollView?
-    private var overlayImageView: UIImageView?
+    private var overlayScrollView: JCTiledScrollView?
     
     private var displayAdjustmentView: UIView?
+    private var imageName: String?
     
+    private var artSize: CGSize?
     internal var model: Art? {
         didSet {
-            overlayImageView?.image = model!.portraitArtImage
+            artSize = model!.artSize!
+            overlayScrollView = JCTiledScrollView(frame: CGRect.zeroRect, contentSize: artSize!)
+            overlayScrollView!.scrollView!.backgroundColor = UIColor.blackColor()
+            overlayScrollView!.dataSource = self
+            overlayScrollView!.levelsOfDetail = 1
+            view.addSubview(overlayScrollView!)
+            
+            overlayScrollView!.scrollView!.contentOffset = CGPoint(x: artSize!.height / 2.0, y: artSize!.width / 2.0)
+            
+            displayAdjustmentView = UIView()
+            displayAdjustmentView!.backgroundColor = UIColor(white: 0, alpha: 0.1)
+            displayAdjustmentView!.userInteractionEnabled = false
+            view.addSubview(displayAdjustmentView!)
             
             if model!.displayMode == .Light {
                 displayAdjustmentView?.backgroundColor = UIColor(white: 0, alpha: 0.1)
@@ -27,26 +40,14 @@ class MoviePlayerController: MPMoviePlayerController, UIScrollViewDelegate {
         }
     }
     
-    override init!(contentURL url: NSURL!) {
-        super.init(contentURL: url)
-        
-        overlayScrollView = UIScrollView()
-        overlayScrollView!.delegate = self
-        overlayScrollView!.minimumZoomScale = 1.0
-        overlayScrollView!.maximumZoomScale = 6.0
-        overlayScrollView!.backgroundColor = UIColor.blackColor()
-        view.addSubview(overlayScrollView!)
-        
-        overlayImageView = UIImageView()
-        overlayImageView!.backgroundColor = UIColor.clearColor()
-        overlayImageView!.clipsToBounds = true
-        overlayImageView!.contentMode = .ScaleAspectFit
-        overlayScrollView!.addSubview(overlayImageView!)
-        
-        displayAdjustmentView = UIView()
-        displayAdjustmentView!.backgroundColor = UIColor(white: 0, alpha: 0.1)
-        displayAdjustmentView!.userInteractionEnabled = false
-        view.addSubview(displayAdjustmentView!)
+    private func adjustImage() {
+        if let artSize = artSize {
+            let widthRatio: CGFloat = UIScreen.mainScreen().bounds.size.width / artSize.width
+            let heightRatio: CGFloat = UIScreen.mainScreen().bounds.size.height / artSize.height
+            
+            overlayScrollView!.scrollView!.minimumZoomScale = min(heightRatio, widthRatio)
+            overlayScrollView!.scrollView!.setZoomScale(max(heightRatio, widthRatio), animated: false)
+        }
     }
     
     override func viewWillLayoutSubviews() {
@@ -54,34 +55,18 @@ class MoviePlayerController: MPMoviePlayerController, UIScrollViewDelegate {
 
         if let overlayScrollView = overlayScrollView {
             overlayScrollView.frame = view.bounds
-            overlayScrollView.contentSize = overlayScrollView.frame.size
-            overlayImageView?.frame = overlayScrollView.bounds
+//            overlayScrollView.contentSize = overlayScrollView.frame.size
+//            overlayImageView?.frame = overlayScrollView.bounds
         }
         
         displayAdjustmentView?.frame = view.bounds
-    }
-    
-    // MARK: - UIScrollViewDelegate
-    
-    internal func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
-        return overlayImageView
-    }
-    
-    internal func scrollViewDidZoom(scrollView: UIScrollView) {
-        var top: CGFloat = 0.0
-        var left: CGFloat = 0.0
         
-        if overlayScrollView!.contentSize.width < overlayScrollView!.bounds.size.width {
-            left = (overlayScrollView!.bounds.size.width - overlayScrollView!.contentSize.width) * 0.5;
-        }
-        if (overlayScrollView!.contentSize.height < overlayScrollView!.bounds.size.height) {
-            top = (overlayScrollView!.bounds.size.height-overlayScrollView!.contentSize.height) * 0.5;
-        }
-        overlayScrollView!.contentInset = UIEdgeInsetsMake(top, left, top, left);
+        adjustImage()
     }
     
-    internal func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView!, atScale scale: CGFloat) {
-        
+    internal func tiledScrollView(scrollView: JCTiledScrollView!, imageForRow row: Int, column: Int, scale: Int) -> UIImage! {
+        let fileName: String = "\(model!.kidName!)_\(row)_\(column)";
+        return UIImage(contentsOfFile: NSBundle.mainBundle().pathForResource(fileName, ofType: "jpg")!)!
     }
     
 }

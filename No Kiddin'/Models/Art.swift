@@ -17,25 +17,18 @@ class Art {
     // MARK: - Data
     
     internal var name: String?
+    
     internal var kidName: String?
     internal var kidTintColor: UIColor?
+    
+    internal var artSize: CGSize?
     internal var displayMode: ArtDisplayMode = .Light
     
     // MARK: - Getters
     
-    internal lazy var portraitArtImage: UIImage = {
-        if let image = UIImage(named: "\(self.kidName!)-Art") {
-            return image
-        }
-        return UIImage(named: "Nora-Art")!
-    }()
-    
-    internal lazy var landscapeArtImage: UIImage = {
-        if let image = UIImage(named: "\(self.kidName!)-Art-Landscape") {
-            return image
-        }
-        return UIImage(named: "Nora-Art-Landscape")!
-    }()
+    internal var artName: String {
+        return "\(self.kidName!)-Art"
+    }
     
     internal var audioPath: String {
         if let video = NSBundle.mainBundle().pathForResource(kidName!, ofType: "mp3") {
@@ -60,21 +53,33 @@ class Art {
     }
     
     internal var subtitlesPath: String {
-        return NSBundle.mainBundle().pathForResource(kidName!, ofType: "srt")!
+        if let subtitlesPath = NSBundle.mainBundle().pathForResource(kidName!, ofType: "srt") {
+            return subtitlesPath
+        }
+        return NSBundle.mainBundle().pathForResource("Nora", ofType: "srt")!
     }
     
     // MARK: - Kids
     
     internal var portraitKidImage: UIImage {
-        return UIImage(named: kidName!)!
+        if let image = UIImage(named: kidName!) {
+            return image
+        }
+        return UIImage(named: "Nora")!
     }
     
     internal var landscapeKidImage: UIImage {
-        return UIImage(named: "\(kidName!)-Landscape")!
+        if let image = UIImage(named: "\(kidName!)-Landscape") {
+            return image
+        }
+        return UIImage(named: "Nora-Landscape")!
     }
     
     internal var avatarImage: UIImage {
-        return UIImage(named: "\(kidName!)-Avatar")!
+        if let image = UIImage(named: "\(kidName!)-Avatar") {
+            return image
+        }
+        return UIImage(named: "Nora-Avatar")!
     }
     
 }

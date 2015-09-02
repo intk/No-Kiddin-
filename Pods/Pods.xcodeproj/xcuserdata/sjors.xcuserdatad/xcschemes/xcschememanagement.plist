@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-JCTiledScrollView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-MPMoviePlayerController-Subtitles.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2F5A4F9FD5C041D66D717B62</key>
+		<key>31B251BFBAF8C85081432E0C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CB8C93CF0BAB6B068B830C33</key>
+		<key>99164DA9D1C94684511A9725</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E0730BC086F92DFAC8B0D82D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

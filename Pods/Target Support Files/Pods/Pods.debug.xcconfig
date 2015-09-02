@@ -1,6 +1,6 @@
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/MPMoviePlayerController-Subtitles"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/MPMoviePlayerController-Subtitles"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"Pods-MPMoviePlayerController-Subtitles"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/JCTiledScrollView" "${PODS_ROOT}/Headers/Public/MPMoviePlayerController-Subtitles"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/JCTiledScrollView" -isystem "${PODS_ROOT}/Headers/Public/MPMoviePlayerController-Subtitles"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"Pods-JCTiledScrollView" -l"Pods-MPMoviePlayerController-Subtitles" -framework "Foundation" -framework "UIKit"
 OTHER_LIBTOOLFLAGS = $(OTHER_LDFLAGS)
 PODS_ROOT = ${SRCROOT}/Pods

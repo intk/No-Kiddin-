@@ -62,7 +62,7 @@ static NSString *const kText = @"kText";
     
     // Parse and show text
     [self openWithSRTString:subtitleString completion:success failure:failure];
-
+    
     
 }
 
@@ -108,8 +108,8 @@ static NSString *const kText = @"kText";
                                                                 selector:@selector(willExitFullscreen:)
                                                                     name:MPMoviePlayerWillExitFullscreenNotification
                                                                   object:nil];
-
-
+                       
+                       
                        if (success != NULL) {
                            success(YES);
                        }
@@ -241,7 +241,7 @@ static NSString *const kText = @"kText";
         
         // Get text
         self.subtitleLabel.text = [lastFounded objectForKey:kText];
-
+        
     } else {
         
         self.subtitleLabel.text = @"";
@@ -298,7 +298,7 @@ static NSString *const kText = @"kText";
                 self.subtitleLabel.font = [UIFont fontWithName:@"Toekomst-Book" size:23.0];
                 self.subtitleLabel.textColor = [UIColor whiteColor];
                 self.subtitleLabel.numberOfLines = 0;
-                self.subtitleLabel.textAlignment = NSTextAlignmentCenter;                
+                self.subtitleLabel.textAlignment = NSTextAlignmentCenter;
                 
                 self.subtitleLabel.layer.shadowColor = [[UIColor blackColor] CGColor];
                 self.subtitleLabel.layer.shadowOffset = CGSizeMake(0, 1);
@@ -306,7 +306,7 @@ static NSString *const kText = @"kText";
                 self.subtitleLabel.layer.shadowOpacity = 1;
                 
                 self.subtitleLabel.verticalAlignment = UIControlContentVerticalAlignmentBottom;
-                                
+                
                 [self.view addSubview:self.subtitleLabel];
                 
                 // Update label constraints
@@ -349,7 +349,7 @@ static NSString *const kText = @"kText";
     
     // Hidden label
     self.subtitleLabel.hidden = YES;
-
+    
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     if (!window) {
         window = [[UIApplication sharedApplication].windows objectAtIndex:0];
@@ -359,7 +359,7 @@ static NSString *const kText = @"kText";
 }
 
 - (void)didEnterFullscreen:(NSNotification *)notification {
-
+    
     // Show label
     self.subtitleLabel.hidden = NO;
     

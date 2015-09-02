@@ -25,6 +25,7 @@ class InfoViewController: UIViewController, UIViewControllerTransitioningDelegat
         ]
     }
     
+    private var scrollView: UIScrollView?
     private var contentView: UIView?
     
     private var infoTitleLabel: UILabel?
@@ -56,8 +57,12 @@ class InfoViewController: UIViewController, UIViewControllerTransitioningDelegat
         cornerView!.cornerViewItem = CornerViewItem(target: self, selector: Selector("dismissViewController"), image: UIImage(named: "Cross")!)
         view.addSubview(cornerView!)
         
+        scrollView = UIScrollView()
+        scrollView!.alwaysBounceVertical = true
+        view.addSubview(scrollView!)
+        
         contentView = UIView()
-        view.addSubview(contentView!)
+        scrollView!.addSubview(contentView!)
         
         infoTitleLabel = UILabel()
         infoTitleLabel!.font = UIFont(name: "Toekomst-Book", size: 15.0)
@@ -68,33 +73,40 @@ class InfoViewController: UIViewController, UIViewControllerTransitioningDelegat
         infoTextView = UITextView()
         infoTextView!.backgroundColor = UIColor.clearColor()
         infoTextView!.editable = false
-        infoTextView!.selectable = false
+        
+        let wat = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("wat", ofType: "txt")!)!
+        let watString = NSString(data: wat, encoding: NSUTF8StringEncoding)!
         infoTextView!.attributedText = NSAttributedString(
-            string: "Children have a distinct way of looking; they see different things from adults, and often perceive striking connections and inspiring analogies that grown-ups miss. The museum aims to incorporates their way of seeing into an easy to use iPad app. Children and young people aged from 5 to 17 recount their reactions to the works of art. The older the works of art become, the older the children providing the commentary.",
+            string: watString as! String,
             attributes: textViewAttributes)
+        
         infoTextView!.textColor = UIColor(rgba: "#999999")
         infoTextView!.scrollEnabled = false
         infoTextView!.textContainer.lineFragmentPadding = 0
         infoTextView!.textContainerInset = UIEdgeInsetsZero
+        infoTextView!.dataDetectorTypes = UIDataDetectorTypes.Link
         contentView!.addSubview(infoTextView!)
         
         summaryTitleLabel = UILabel()
         summaryTitleLabel!.font = UIFont(name: "Toekomst-Book", size: 15.0)
-        summaryTitleLabel!.text = "Samenwerking"
+        summaryTitleLabel!.text = "Colofon"
         summaryTitleLabel!.textColor = UIColor(rgba: "#009CFF")
         contentView!.addSubview(summaryTitleLabel!)
         
+        let colofon = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("colofon", ofType: "txt")!)!
+        let colofonString = NSString(data: colofon, encoding: NSUTF8StringEncoding)!
         summaryTextView = UITextView()
         summaryTextView!.backgroundColor = UIColor.clearColor()
         summaryTextView!.editable = false
-        summaryTextView!.selectable = false
+        summaryTextView!.selectable = true
         summaryTextView!.attributedText = NSAttributedString(
-            string: "Children have a distinct way of looking; they see different things from adults, and often perceive striking connections and inspiring analogies that grown-ups miss. ",
+            string: colofonString as! String,
             attributes: textViewAttributes)
         summaryTextView!.textColor = UIColor(rgba: "#999999")
         summaryTextView!.scrollEnabled = false
         summaryTextView!.textContainer.lineFragmentPadding = 0
         summaryTextView!.textContainerInset = UIEdgeInsetsZero
+        summaryTextView!.dataDetectorTypes = UIDataDetectorTypes.Link
         contentView!.addSubview(summaryTextView!)
         
         vanAbbeLogoView = UIImageView(image: UIImage(named: "VanAbbemuseum")!)
@@ -104,6 +116,8 @@ class InfoViewController: UIViewController, UIViewControllerTransitioningDelegat
         radboudLogoView = UIImageView(image: UIImage(named: "RadboudUMC")!)
         radboudLogoView!.contentMode = .Left
         contentView!.addSubview(radboudLogoView!)
+        
+        view.bringSubviewToFront(cornerView!)
     }
     
     override func viewWillLayoutSubviews() {
@@ -111,19 +125,19 @@ class InfoViewController: UIViewController, UIViewControllerTransitioningDelegat
         
         cornerView?.frame = CGRect(x: 0, y: 0, width: 74, height: 76)
         
-        let contentWidth: CGFloat = 370.0
+        let contentWidth: CGFloat = 480.0
         let labelHeight: CGFloat = 20.0
         let labelMargin: CGFloat = 20.0
         let sectionMargin: CGFloat = 35.0
         let logoViewHeight: CGFloat = 20
         
-        infoTitleLabel?.frame = CGRect(x: 0, y: 0, width: contentWidth, height: labelHeight)
+        infoTitleLabel?.frame = CGRect(x: 0, y: 44, width: contentWidth, height: labelHeight)
         
         if let infoTextView = infoTextView {
             let infoText = infoTextView.text as NSString
             var infoTextViewFrame = infoText.boundingRectWithSize(CGSize(width: contentWidth, height: CGFloat.max), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: textViewAttributes, context: nil)
             
-            infoTextViewFrame.origin.y = labelHeight + labelMargin
+            infoTextViewFrame.origin.y = 60 + labelHeight + labelMargin
             infoTextView.frame = infoTextViewFrame
             
             if let summaryTitleLabel = summaryTitleLabel {
@@ -141,14 +155,16 @@ class InfoViewController: UIViewController, UIViewControllerTransitioningDelegat
                         
                         if let radboudLogoView = radboudLogoView {
                             radboudLogoView.frame = CGRect(x: 0, y: vanAbbeLogoView.frame.origin.y + vanAbbeLogoView.frame.height + sectionMargin, width: contentWidth, height: logoViewHeight)
+                            
+                            scrollView?.contentSize = CGSize(width: 0, height: radboudLogoView.frame.origin.y + radboudLogoView.frame.height + 60.0)
                         }
                     }
                 }
             }
         }
-        
-        let contentHeight = radboudLogoView != nil ? radboudLogoView!.frame.origin.y + radboudLogoView!.frame.height : 0
-        contentView?.frame = CGRect(x: (view.frame.width / 2) - (contentWidth / 2), y: (view.frame.height / 2) - (contentHeight / 2), width: contentWidth, height: contentHeight)
+
+        scrollView?.frame = view.bounds
+        contentView?.frame = CGRect(x: (view.frame.width / 2) - (contentWidth / 2), y: 0, width: contentWidth, height: view.frame.height)
     }
     
     internal func dismissViewController() {
