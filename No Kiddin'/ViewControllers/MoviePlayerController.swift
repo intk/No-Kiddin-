@@ -13,16 +13,17 @@ class MoviePlayerController: MPMoviePlayerController, JCTileSource, UIScrollView
     private var overlayScrollView: JCTiledScrollView?
     
     private var displayAdjustmentView: UIView?
-    private var imageName: String?
     
     private var artSize: CGSize?
     internal var model: Art? {
         didSet {
-            artSize = model!.artSize!
+            artSize = CGSize(width: floor(model!.artSize!.width / 4), height: floor(model!.artSize!.height / 4))
             overlayScrollView = JCTiledScrollView(frame: CGRect.zeroRect, contentSize: artSize!)
             overlayScrollView!.scrollView!.backgroundColor = UIColor.blackColor()
             overlayScrollView!.dataSource = self
-            overlayScrollView!.levelsOfDetail = 1
+            overlayScrollView!.zoomScale = 1
+            overlayScrollView!.levelsOfZoom = 3
+            overlayScrollView!.levelsOfDetail = 3
             view.addSubview(overlayScrollView!)
             
             overlayScrollView!.scrollView!.contentOffset = CGPoint(x: artSize!.height / 2.0, y: artSize!.width / 2.0)
@@ -55,8 +56,6 @@ class MoviePlayerController: MPMoviePlayerController, JCTileSource, UIScrollView
 
         if let overlayScrollView = overlayScrollView {
             overlayScrollView.frame = view.bounds
-//            overlayScrollView.contentSize = overlayScrollView.frame.size
-//            overlayImageView?.frame = overlayScrollView.bounds
         }
         
         displayAdjustmentView?.frame = view.bounds
@@ -65,8 +64,9 @@ class MoviePlayerController: MPMoviePlayerController, JCTileSource, UIScrollView
     }
     
     internal func tiledScrollView(scrollView: JCTiledScrollView!, imageForRow row: Int, column: Int, scale: Int) -> UIImage! {
-        let fileName: String = "\(model!.kidName!)_\(row)_\(column)";
-        return UIImage(contentsOfFile: NSBundle.mainBundle().pathForResource(fileName, ofType: "jpg")!)!
+        let fileName = String(format: "%@-Art_\(scale)x_%02d_%02d", arguments: [model!.kidName!, row, column])
+        println(fileName)
+        return UIImage(named: fileName)!
     }
     
 }
