@@ -8,34 +8,102 @@
 
 import UIKit
 
-class InfoViewController: UIViewController, UIViewControllerTransitioningDelegate {
+class AttributedTableViewCell: UITableViewCell {
+    
+    private var textView: UITextView?
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        backgroundColor = UIColor.clearColor()
+        selectionStyle = .None
+    
+        textView = UITextView()
+        textView!.editable = false
+        textView!.selectable = true
+        textView!.scrollEnabled = false
+        textView!.dataDetectorTypes = .Link
+        textView!.linkTextAttributes = [NSForegroundColorAttributeName: UIColor(rgba: "#555555")]
+        textView!.textContainerInset = UIEdgeInsetsZero
+        textView!.textContainer.lineFragmentPadding = 0
+        textView!.backgroundColor = UIColor.clearColor()
+        addSubview(textView!)
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        let contentWidth: CGFloat = 480.0
+        textView?.frame = CGRect(x: CGRectGetMidX(frame) - contentWidth / 2, y: 0, width: contentWidth, height: frame.height - 30.0)
+    }
+    
+    internal func setAttributedText(text: String?, attributes: [NSObject: AnyObject]) {
+        if let text = text {
+            textView?.attributedText = NSAttributedString(string: text, attributes: attributes)
+        }
+    }
+    
+}
+
+class ImageTableViewCell: UITableViewCell {
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        backgroundColor = UIColor.clearColor()
+        selectionStyle = .None
+        
+        imageView?.contentMode = .TopLeft
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        let contentWidth: CGFloat = 480.0
+        let offsetX = CGRectGetMidX(frame) - contentWidth / 2
+        imageView?.frame = CGRect(x: offsetX, y: 0, width: frame.width, height: frame.height - 30.0)
+    }
+    
+}
+
+class InfoViewController: UIViewController, UIViewControllerTransitioningDelegate, UITableViewDataSource, UITableViewDelegate {
 
     private var cornerView: CornerView?
     
-    private var paragraphStyle: NSMutableParagraphStyle {
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 7
-        return paragraphStyle
-    }
-    
-    private var textViewAttributes: [NSObject: AnyObject!] {
+    private lazy var titleAttributes: [NSObject: AnyObject!] = {
         return [
             NSFontAttributeName: UIFont(name: "Toekomst-Book", size: 15.0)!,
-            NSParagraphStyleAttributeName: paragraphStyle
+            NSForegroundColorAttributeName: UIColor(rgba: "#009CFF")
         ]
+    }()
+    
+    private lazy var contentAttributes: [NSObject: AnyObject!] = {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 7
+        
+        return [
+            NSFontAttributeName: UIFont(name: "Toekomst-Book", size: 15.0)!,
+            NSParagraphStyleAttributeName: paragraphStyle,
+            NSForegroundColorAttributeName: UIColor(rgba: "#999999")
+        ]
+    }()
+    
+    internal var cellModels: [InfoTableViewCellModel] = [] {
+        didSet {
+            tableView?.reloadData()
+        }
     }
     
-    private var scrollView: UIScrollView?
-    private var contentView: UIView?
-    
-    private var infoTitleLabel: UILabel?
-    private var infoTextView: UITextView?
-    
-    private var summaryTitleLabel: UILabel?
-    private var summaryTextView: UITextView?
-    
-    private var vanAbbeLogoView: UIImageView?
-    private var radboudLogoView: UIImageView?
+    private var viewModel: InfoViewModel?
+    private var tableView: UITableView?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -56,66 +124,19 @@ class InfoViewController: UIViewController, UIViewControllerTransitioningDelegat
         cornerView = CornerView()
         cornerView!.cornerViewItem = CornerViewItem(target: self, selector: Selector("dismissViewController"), image: UIImage(named: "Cross")!)
         view.addSubview(cornerView!)
+
+        tableView = UITableView()
+        tableView!.dataSource = self
+        tableView!.delegate = self
+        tableView!.separatorStyle = .None
+        tableView!.contentOffset = CGPoint(x: 0, y: -60.0)
+        tableView!.contentInset = UIEdgeInsets(top: 60.0, left: 0, bottom: 40.0, right: 0)
+        tableView!.backgroundColor = UIColor.clearColor()
+        tableView!.registerClass(ImageTableViewCell.classForCoder(), forCellReuseIdentifier: "ImageCell")
+        tableView!.registerClass(AttributedTableViewCell.classForCoder(), forCellReuseIdentifier: "TextCell")
+        view.addSubview(tableView!)
         
-        scrollView = UIScrollView()
-        scrollView!.alwaysBounceVertical = true
-        view.addSubview(scrollView!)
-        
-        contentView = UIView()
-        scrollView!.addSubview(contentView!)
-        
-        infoTitleLabel = UILabel()
-        infoTitleLabel!.font = UIFont(name: "Toekomst-Book", size: 15.0)
-        infoTitleLabel!.text = "Informatie over de app"
-        infoTitleLabel!.textColor = UIColor(rgba: "#009CFF")
-        contentView!.addSubview(infoTitleLabel!)
-        
-        infoTextView = UITextView()
-        infoTextView!.backgroundColor = UIColor.clearColor()
-        infoTextView!.editable = false
-        
-        let wat = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("wat", ofType: "txt")!)!
-        let watString = NSString(data: wat, encoding: NSUTF8StringEncoding)!
-        infoTextView!.attributedText = NSAttributedString(
-            string: watString as! String,
-            attributes: textViewAttributes)
-        
-        infoTextView!.textColor = UIColor(rgba: "#999999")
-        infoTextView!.scrollEnabled = false
-        infoTextView!.textContainer.lineFragmentPadding = 0
-        infoTextView!.textContainerInset = UIEdgeInsetsZero
-        infoTextView!.dataDetectorTypes = UIDataDetectorTypes.Link
-        contentView!.addSubview(infoTextView!)
-        
-        summaryTitleLabel = UILabel()
-        summaryTitleLabel!.font = UIFont(name: "Toekomst-Book", size: 15.0)
-        summaryTitleLabel!.text = "Colofon"
-        summaryTitleLabel!.textColor = UIColor(rgba: "#009CFF")
-        contentView!.addSubview(summaryTitleLabel!)
-        
-        let colofon = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("colofon", ofType: "txt")!)!
-        let colofonString = NSString(data: colofon, encoding: NSUTF8StringEncoding)!
-        summaryTextView = UITextView()
-        summaryTextView!.backgroundColor = UIColor.clearColor()
-        summaryTextView!.editable = false
-        summaryTextView!.selectable = true
-        summaryTextView!.attributedText = NSAttributedString(
-            string: colofonString as! String,
-            attributes: textViewAttributes)
-        summaryTextView!.textColor = UIColor(rgba: "#999999")
-        summaryTextView!.scrollEnabled = false
-        summaryTextView!.textContainer.lineFragmentPadding = 0
-        summaryTextView!.textContainerInset = UIEdgeInsetsZero
-        summaryTextView!.dataDetectorTypes = UIDataDetectorTypes.Link
-        contentView!.addSubview(summaryTextView!)
-        
-        vanAbbeLogoView = UIImageView(image: UIImage(named: "VanAbbemuseum")!)
-        vanAbbeLogoView!.contentMode = .Left
-        contentView!.addSubview(vanAbbeLogoView!)
-        
-        radboudLogoView = UIImageView(image: UIImage(named: "RadboudUMC")!)
-        radboudLogoView!.contentMode = .Left
-        contentView!.addSubview(radboudLogoView!)
+        viewModel = InfoViewModel(viewController: self)
         
         view.bringSubviewToFront(cornerView!)
     }
@@ -124,51 +145,65 @@ class InfoViewController: UIViewController, UIViewControllerTransitioningDelegat
         super.viewWillLayoutSubviews()
         
         cornerView?.frame = CGRect(x: 0, y: 0, width: 74, height: 76)
-        
-        let contentWidth: CGFloat = 480.0
-        let labelHeight: CGFloat = 20.0
-        let labelMargin: CGFloat = 20.0
-        let sectionMargin: CGFloat = 35.0
-        let logoViewHeight: CGFloat = 20
-        
-        infoTitleLabel?.frame = CGRect(x: 0, y: 44, width: contentWidth, height: labelHeight)
-        
-        if let infoTextView = infoTextView {
-            let infoText = infoTextView.text as NSString
-            var infoTextViewFrame = infoText.boundingRectWithSize(CGSize(width: contentWidth, height: CGFloat.max), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: textViewAttributes, context: nil)
-            
-            infoTextViewFrame.origin.y = 60 + labelHeight + labelMargin
-            infoTextView.frame = infoTextViewFrame
-            
-            if let summaryTitleLabel = summaryTitleLabel {
-                summaryTitleLabel.frame = CGRect(x: 0, y: infoTextViewFrame.origin.y + infoTextViewFrame.height + 35, width: contentWidth, height: labelHeight)
-                
-                if let summaryTextView = summaryTextView {
-                    let summaryText = summaryTextView.text as NSString
-                    var summaryTextViewFrame = summaryText.boundingRectWithSize(CGSize(width: contentWidth, height: CGFloat.max), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: textViewAttributes, context: nil)
-                    
-                    summaryTextViewFrame.origin.y = summaryTitleLabel.frame.origin.y + labelHeight + labelMargin
-                    summaryTextView.frame = summaryTextViewFrame
-                    
-                    if let vanAbbeLogoView = vanAbbeLogoView {
-                        vanAbbeLogoView.frame = CGRect(x: 0, y: summaryTextView.frame.origin.y + summaryTextView.frame.height + sectionMargin, width: contentWidth, height: logoViewHeight)
-                        
-                        if let radboudLogoView = radboudLogoView {
-                            radboudLogoView.frame = CGRect(x: 0, y: vanAbbeLogoView.frame.origin.y + vanAbbeLogoView.frame.height + sectionMargin, width: contentWidth, height: logoViewHeight)
-                            
-                            scrollView?.contentSize = CGSize(width: 0, height: radboudLogoView.frame.origin.y + radboudLogoView.frame.height + 60.0)
-                        }
-                    }
-                }
-            }
-        }
-
-        scrollView?.frame = view.bounds
-        contentView?.frame = CGRect(x: (view.frame.width / 2) - (contentWidth / 2), y: 0, width: contentWidth, height: view.frame.height)
+        tableView?.frame = view.bounds
     }
     
     internal func dismissViewController() {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // MARK: - UITableViewDataSource
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let model = cellModels[indexPath.row]
+        
+        switch model.type! {
+        case .Title:
+            let textModel = model as! InfoTableViewTextCellModel
+            let frame = textModel.text!.boundingRectWithSize(
+                CGSize(width: 480.0, height: CGFloat.max),
+                options: NSStringDrawingOptions.UsesLineFragmentOrigin,
+                attributes: titleAttributes, context: nil)
+            return frame.height + 30.0
+        case .Content:
+            let textModel = model as! InfoTableViewTextCellModel
+            let frame = textModel.text!.boundingRectWithSize(
+                CGSize(width: 480.0, height: CGFloat.max),
+                options: NSStringDrawingOptions.UsesLineFragmentOrigin,
+                attributes: contentAttributes, context: nil)
+            return frame.height + 30.0
+        case .Image:
+            let imageModel = model as! InfoTableViewImageCellModel
+            return imageModel.image!.size.height + 30.0
+        default:
+            return 0
+        }
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return cellModels.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell: AnyObject
+        let model = cellModels[indexPath.row]
+        
+        switch model.type! {
+        case .Title:
+            cell = tableView.dequeueReusableCellWithIdentifier("TextCell") as! AttributedTableViewCell
+            let textModel = model as! InfoTableViewTextCellModel
+            cell.setAttributedText(textModel.text, attributes: titleAttributes)
+        case .Image:
+            cell = tableView.dequeueReusableCellWithIdentifier("ImageCell") as! ImageTableViewCell
+            let imageModel = model as! InfoTableViewImageCellModel
+            cell.imageView??.image = imageModel.image
+        default:
+            cell = tableView.dequeueReusableCellWithIdentifier("TextCell") as! AttributedTableViewCell
+            let textModel = model as! InfoTableViewTextCellModel
+            cell.setAttributedText(textModel.text, attributes: contentAttributes)
+        }
+        
+        return cell as! UITableViewCell
     }
     
     // MARK: - UIViewControllerTransitioningDelegate

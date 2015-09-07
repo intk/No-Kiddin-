@@ -73,6 +73,7 @@ class DetailViewController: UIViewController, UIViewControllerTransitioningDeleg
         moviePlayer = MoviePlayerController(contentURL: url)
         moviePlayer!.model = model!
         moviePlayer!.movieSourceType = MPMovieSourceType.Unknown
+        moviePlayer!.controlStyle = .Embedded
         
         view.addSubview(moviePlayer!.view)
         view.sendSubviewToBack(moviePlayer!.view)

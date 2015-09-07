@@ -71,7 +71,7 @@ class KidsViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     // MARK: - UICollectionViewDataSource
     
-    internal          func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    internal func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
     }
     

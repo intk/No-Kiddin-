@@ -21,6 +21,7 @@ class Art {
     internal var kidName: String?
     internal var kidTintColor: UIColor?
     
+    internal var audioFormat: String = "mp3"
     internal var artSize: CGSize?
     internal var displayMode: ArtDisplayMode = .Light
     
@@ -31,8 +32,8 @@ class Art {
     }
     
     internal var audioPath: String {
-        if let video = NSBundle.mainBundle().pathForResource(kidName!, ofType: "mp3") {
-            return video
+        if let audio = NSBundle.mainBundle().pathForResource(kidName!, ofType: audioFormat) {
+            return audio
         }
         return NSBundle.mainBundle().pathForResource("Bodil", ofType: "mp3")!
     }
@@ -40,17 +41,6 @@ class Art {
     internal lazy var audioUrl: NSURL = {
         return NSURL(fileURLWithPath: self.audioPath)!
     }()
-    
-    internal var videoPath: String {
-        if let video = NSBundle.mainBundle().pathForResource(kidName!, ofType: "mov") {
-            return video
-        }
-        return NSBundle.mainBundle().pathForResource("Nora", ofType: "mov")!
-    }
-    
-    internal var videoUrl: NSURL {
-        return NSURL(fileURLWithPath: videoPath)!
-    }
     
     internal var subtitlesPath: String {
         if let subtitlesPath = NSBundle.mainBundle().pathForResource(kidName!, ofType: "srt") {

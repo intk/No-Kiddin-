@@ -17,7 +17,7 @@ class MoviePlayerController: MPMoviePlayerController, JCTileSource, UIScrollView
     private var artSize: CGSize?
     internal var model: Art? {
         didSet {
-            artSize = CGSize(width: floor(model!.artSize!.width / 4), height: floor(model!.artSize!.height / 4))
+            artSize = CGSize(width: floor(model!.artSize!.width / 4) - 2.0, height: floor(model!.artSize!.height / 4) - 2.0)
             overlayScrollView = JCTiledScrollView(frame: CGRect.zeroRect, contentSize: artSize!)
             overlayScrollView!.scrollView!.backgroundColor = UIColor.blackColor()
             overlayScrollView!.dataSource = self
@@ -54,11 +54,21 @@ class MoviePlayerController: MPMoviePlayerController, JCTileSource, UIScrollView
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
 
+        let swipableViewHeight: CGFloat = 40.0
+        let contentFrame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - swipableViewHeight)
+        
         if let overlayScrollView = overlayScrollView {
-            overlayScrollView.frame = view.bounds
+            overlayScrollView.frame = contentFrame
         }
         
-        displayAdjustmentView?.frame = view.bounds
+        for var i = 0; i < view.subviews.count; i++ {
+            if view.subviews[i].isKindOfClass(NSClassFromString("MPSwipableView")) {
+                var swipableView = self.view.subviews[i] as! UIView
+                swipableView.frame = CGRect(x: 0, y: self.view.frame.height - swipableViewHeight, width: self.view.frame.width, height: swipableViewHeight)
+            }
+        }
+        
+        displayAdjustmentView?.frame = contentFrame
         
         adjustImage()
     }
@@ -66,7 +76,10 @@ class MoviePlayerController: MPMoviePlayerController, JCTileSource, UIScrollView
     internal func tiledScrollView(scrollView: JCTiledScrollView!, imageForRow row: Int, column: Int, scale: Int) -> UIImage! {
         let fileName = String(format: "%@-Art_\(scale)x_%02d_%02d", arguments: [model!.kidName!, row, column])
         println(fileName)
-        return UIImage(named: fileName)!
+        if let image = UIImage(named: fileName) {
+            return image
+        }
+        return UIImage(named: "Placeholder")!
     }
     
 }

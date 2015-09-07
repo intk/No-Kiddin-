@@ -39,13 +39,15 @@ class KidViewModel {
         items.append(nora)
         
         let floris = Art()
+        floris.audioFormat = "wav"
         floris.name = "Ruud van Empel, Reflexion"
         floris.kidTintColor = UIColor(rgba: "#6c9f5d")
         floris.kidName = "Floris"
-        floris.artSize = CGSize(width: 3123, height: 2801)
+        floris.artSize = CGSize(width: 3544, height: 2468)
         items.append(floris)
         
         let storm = Art()
+        storm.audioFormat = "wav"
         storm.name = "Viviane Sassen, Modder at work"
         storm.kidTintColor = UIColor(rgba: "#da759e")
         storm.kidName = "Storm"
@@ -61,6 +63,7 @@ class KidViewModel {
         items.append(puk)
         
         let guusje = Art()
+        guusje.audioFormat = "wav"
         guusje.name = "Nicolas Dings, Enkhuizer Almanak"
         guusje.kidTintColor = UIColor(rgba: "#ff8d37")
         guusje.kidName = "Guusje"
@@ -96,6 +99,7 @@ class KidViewModel {
         items.append(nanne)
         
         let sam = Art()
+        sam.audioFormat = "wav"
         sam.name = "Erwin Olaf, Apolonia"
         sam.kidTintColor = UIColor(rgba: "#adc0ff")
         sam.kidName = "Sam"

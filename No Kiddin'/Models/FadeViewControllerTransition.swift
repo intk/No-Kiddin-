@@ -50,7 +50,6 @@ class FadeViewControllerTransition: NSObject, UIViewControllerAnimatedTransition
             }, completion: { (finished) -> Void in
                 transitionContext.completeTransition(true)
                 
-                UIApplication.sharedApplication().keyWindow!.addSubview(fromViewController.view)
                 UIApplication.sharedApplication().keyWindow!.addSubview(toViewController.view)
             })
         }
