@@ -40,7 +40,7 @@ class DetailViewController: UIViewController, UIViewControllerTransitioningDeleg
         view.backgroundColor = UIColor.blackColor()
         
         cornerView = CornerView()
-        cornerView!.cornerViewItem = CornerViewItem(target: self, selector: Selector("dismissViewController"), image: UIImage(named: "Cross")!)
+        cornerView!.cornerViewItem = CornerViewItem(target: self, selector: Selector("dismissViewController"), image: UIImage(named: "Cross")!, tintColor: UIColor(rgba: "#FD2C2C"))
         view.addSubview(cornerView!)
         
         titleLabel = UILabel()
@@ -93,7 +93,7 @@ class DetailViewController: UIViewController, UIViewControllerTransitioningDeleg
         moviePlayer.openSRTFileAtPath(subtitlesPath, completion: { (finished) -> Void in
             moviePlayer.showSubtitles()
         }) { (error) -> Void in
-            println(error.description)
+            print(error.description)
         }
         
         return moviePlayer

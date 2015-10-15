@@ -18,7 +18,7 @@ class MoviePlayerController: MPMoviePlayerController, JCTileSource, UIScrollView
     internal var model: Art? {
         didSet {
             artSize = CGSize(width: floor(model!.artSize!.width / 4) - 2.0, height: floor(model!.artSize!.height / 4) - 2.0)
-            overlayScrollView = JCTiledScrollView(frame: CGRect.zeroRect, contentSize: artSize!)
+            overlayScrollView = JCTiledScrollView(frame: .zero, contentSize: artSize!)
             overlayScrollView!.scrollView!.backgroundColor = UIColor.blackColor()
             overlayScrollView!.dataSource = self
             overlayScrollView!.zoomScale = 1
@@ -47,7 +47,7 @@ class MoviePlayerController: MPMoviePlayerController, JCTileSource, UIScrollView
             let heightRatio: CGFloat = UIScreen.mainScreen().bounds.size.height / artSize.height
             
             overlayScrollView!.scrollView!.minimumZoomScale = min(heightRatio, widthRatio)
-            overlayScrollView!.scrollView!.setZoomScale(max(heightRatio, widthRatio), animated: false)
+            overlayScrollView!.scrollView!.setZoomScale(min(heightRatio, widthRatio), animated: false)
         }
     }
     
@@ -62,8 +62,8 @@ class MoviePlayerController: MPMoviePlayerController, JCTileSource, UIScrollView
         }
         
         for var i = 0; i < view.subviews.count; i++ {
-            if view.subviews[i].isKindOfClass(NSClassFromString("MPSwipableView")) {
-                var swipableView = self.view.subviews[i] as! UIView
+            if view.subviews[i].isKindOfClass(NSClassFromString("MPSwipableView")!) {
+                let swipableView = self.view.subviews[i]
                 swipableView.frame = CGRect(x: 0, y: self.view.frame.height - swipableViewHeight, width: self.view.frame.width, height: swipableViewHeight)
             }
         }
@@ -75,7 +75,7 @@ class MoviePlayerController: MPMoviePlayerController, JCTileSource, UIScrollView
     
     internal func tiledScrollView(scrollView: JCTiledScrollView!, imageForRow row: Int, column: Int, scale: Int) -> UIImage! {
         let fileName = String(format: "%@-Art_\(scale)x_%02d_%02d", arguments: [model!.kidName!, row, column])
-        println(fileName)
+        print(fileName)
         if let image = UIImage(named: fileName) {
             return image
         }

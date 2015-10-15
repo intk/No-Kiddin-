@@ -83,24 +83,23 @@ class InfoViewModel {
         creditsContent.text = readTextFile("credits-content")
         array.append(creditsContent)
         
-        let vanAbbeMuseumLogo = InfoTableViewImageCellModel()
-        vanAbbeMuseumLogo.type = .Image
-        vanAbbeMuseumLogo.image = UIImage(named: "VanAbbeMuseum")
-        array.append(vanAbbeMuseumLogo)
-        
-        let radboudLogo = InfoTableViewImageCellModel()
-        radboudLogo.type = .Image
-        radboudLogo.image = UIImage(named: "RadboudUMC")
-        array.append(radboudLogo)
+        let logo = InfoTableViewImageCellModel()
+        logo.type = .Image
+        logo.image = UIImage(named: "Logos")
+        array.append(logo)
         
         return array
     }
     
     private func readTextFile(name: String) -> String? {
-        let error: NSError? = nil
         let path = NSBundle.mainBundle().pathForResource(name, ofType: "txt")!
         
-        return NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding, error: nil) as? String
+        do {
+            let text: String = try NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding) as String
+            return text
+        } catch _ {
+            fatalError("Cannot read file")
+        }
     }
     
 }

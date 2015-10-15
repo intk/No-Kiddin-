@@ -19,6 +19,7 @@ class Art {
     internal var name: String?
     
     internal var kidName: String?
+    internal var kidAge: Int?
     internal var kidTintColor: UIColor?
     
     internal var audioFormat: String = "mp3"
@@ -39,7 +40,7 @@ class Art {
     }
     
     internal lazy var audioUrl: NSURL = {
-        return NSURL(fileURLWithPath: self.audioPath)!
+        return NSURL(fileURLWithPath: self.audioPath)
     }()
     
     internal var subtitlesPath: String {

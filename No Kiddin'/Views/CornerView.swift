@@ -13,11 +13,13 @@ class CornerViewItem {
     internal var target: AnyObject
     internal var selector: Selector
     internal var image: UIImage
+    internal var tintColor: UIColor
     
-    init(target: AnyObject, selector: Selector, image: UIImage) {
+    init(target: AnyObject, selector: Selector, image: UIImage, tintColor: UIColor) {
         self.target = target
         self.selector = selector
         self.image = image
+        self.tintColor = tintColor
     }
     
 }
@@ -27,11 +29,12 @@ class CornerView: UIView {
     private var backgroundView: UIView?
     
     private var button: UIButton?
-    private var iconView: UIImageView?
+    internal var iconView: UIImageView?
     
     internal var cornerViewItem: CornerViewItem? {
         didSet {
             iconView?.image = cornerViewItem!.image.imageWithRenderingMode(.AlwaysTemplate)
+            iconView?.tintColor = cornerViewItem!.tintColor
             button?.addTarget(cornerViewItem!.target, action: cornerViewItem!.selector, forControlEvents: .TouchUpInside)
         }
     }
@@ -42,14 +45,11 @@ class CornerView: UIView {
         backgroundView = UIImageView(image: UIImage(named: "Corner")!)
         addSubview(backgroundView!)
         
-        button = UIButton.buttonWithType(.Custom) as? UIButton
-        button!.addTarget(self, action: Selector("buttonDidTouchDown"), forControlEvents: .TouchDown)
-        button!.addTarget(self, action: Selector("buttonDidTouchCancel"), forControlEvents: .TouchCancel)
+        button = UIButton(type: .Custom)
         addSubview(button!)
 
         iconView = UIImageView()
         iconView!.contentMode = .Center
-        iconView!.tintColor = UIColor(rgba: "#cccccc")
         addSubview(iconView!)
     }
 
@@ -64,14 +64,6 @@ class CornerView: UIView {
         
         button?.frame = bounds
         iconView?.frame = CGRect(x: 9, y: 9, width: 25, height: 25)
-    }
-    
-    internal func buttonDidTouchDown() {
-//        iconView?.tintColor = UIColor(rgba: "#eeeeee")
-    }
-    
-    internal func buttonDidTouchCancel() {
-//        iconView?.tintColor = UIColor(rgba: "#cccccc")
     }
     
 }

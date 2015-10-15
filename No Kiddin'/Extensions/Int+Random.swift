@@ -16,7 +16,7 @@ extension Int {
     
     static func rand(max: Int, notIn array: Array<Int>) -> Int {
         var rand = self.rand(max)
-        while (contains(array, rand)) {
+        while (array.contains(rand)) {
             rand = self.rand(max)
         }
         

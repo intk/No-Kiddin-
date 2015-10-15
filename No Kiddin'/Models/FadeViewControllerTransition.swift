@@ -18,13 +18,13 @@ class FadeViewControllerTransition: NSObject, UIViewControllerAnimatedTransition
         self.isPresenting = isPresenting
     }
     
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
+    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return 0.5
     }
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        var fromViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
-        var toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
+        let fromViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
+        let toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
         
         if isPresenting {
             fromViewController.view.userInteractionEnabled = false
@@ -34,16 +34,16 @@ class FadeViewControllerTransition: NSObject, UIViewControllerAnimatedTransition
                 toViewController.view.alpha = 1.0
             }, completion: nil)
             
-            transitionContext.containerView().addSubview(fromViewController.view)
-            transitionContext.containerView().addSubview(toViewController.view)
+            transitionContext.containerView()!.addSubview(fromViewController.view)
+            transitionContext.containerView()!.addSubview(toViewController.view)
             
             transitionContext.completeTransition(true)
         } else {
             toViewController.view.userInteractionEnabled = true
             toViewController.view.alpha = 0.0
             
-            transitionContext.containerView().addSubview(fromViewController.view)
-            transitionContext.containerView().addSubview(toViewController.view)
+            transitionContext.containerView()!.addSubview(fromViewController.view)
+            transitionContext.containerView()!.addSubview(toViewController.view)
             
             UIView.animateWithDuration(0.15, delay: 0.0, options: .CurveEaseOut, animations: { () -> Void in
                 toViewController.view.alpha = 1.0

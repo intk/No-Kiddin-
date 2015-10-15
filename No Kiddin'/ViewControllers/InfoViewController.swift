@@ -17,13 +17,13 @@ class AttributedTableViewCell: UITableViewCell {
         
         backgroundColor = UIColor.clearColor()
         selectionStyle = .None
-    
+            
         textView = UITextView()
         textView!.editable = false
         textView!.selectable = true
         textView!.scrollEnabled = false
         textView!.dataDetectorTypes = .Link
-        textView!.linkTextAttributes = [NSForegroundColorAttributeName: UIColor(rgba: "#555555")]
+        textView!.linkTextAttributes = [NSForegroundColorAttributeName: UIColor(rgba: "#999999")]
         textView!.textContainerInset = UIEdgeInsetsZero
         textView!.textContainer.lineFragmentPadding = 0
         textView!.backgroundColor = UIColor.clearColor()
@@ -37,11 +37,10 @@ class AttributedTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let contentWidth: CGFloat = 480.0
-        textView?.frame = CGRect(x: CGRectGetMidX(frame) - contentWidth / 2, y: 0, width: contentWidth, height: frame.height - 30.0)
+        textView?.frame = CGRect(x: 144, y: 0, width: frame.width - 288, height: frame.height - 30.0)
     }
     
-    internal func setAttributedText(text: String?, attributes: [NSObject: AnyObject]) {
+    internal func setAttributedText(text: String?, attributes: [String: AnyObject]) {
         if let text = text {
             textView?.attributedText = NSAttributedString(string: text, attributes: attributes)
         }
@@ -67,9 +66,7 @@ class ImageTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let contentWidth: CGFloat = 480.0
-        let offsetX = CGRectGetMidX(frame) - contentWidth / 2
-        imageView?.frame = CGRect(x: offsetX, y: 0, width: frame.width, height: frame.height - 30.0)
+        imageView?.frame = CGRect(x: 144, y: 0, width: frame.width - 288, height: frame.height - 30.0)
     }
     
 }
@@ -78,21 +75,21 @@ class InfoViewController: UIViewController, UIViewControllerTransitioningDelegat
 
     private var cornerView: CornerView?
     
-    private lazy var titleAttributes: [NSObject: AnyObject!] = {
+    private lazy var titleAttributes: [String: AnyObject!] = {
         return [
-            NSFontAttributeName: UIFont(name: "Toekomst-Book", size: 15.0)!,
+            NSFontAttributeName: UIFont(name: "Toekomst-Book", size: 18.0)!,
             NSForegroundColorAttributeName: UIColor(rgba: "#009CFF")
         ]
     }()
     
-    private lazy var contentAttributes: [NSObject: AnyObject!] = {
+    private lazy var contentAttributes: [String: AnyObject!] = {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 7
         
         return [
-            NSFontAttributeName: UIFont(name: "Toekomst-Book", size: 15.0)!,
+            NSFontAttributeName: UIFont(name: "Toekomst-Book", size: 18.0)!,
             NSParagraphStyleAttributeName: paragraphStyle,
-            NSForegroundColorAttributeName: UIColor(rgba: "#999999")
+            NSForegroundColorAttributeName: UIColor(rgba: "#555555")
         ]
     }()
     
@@ -122,7 +119,7 @@ class InfoViewController: UIViewController, UIViewControllerTransitioningDelegat
         view.backgroundColor = UIColor(white: 1, alpha: 0.95)
         
         cornerView = CornerView()
-        cornerView!.cornerViewItem = CornerViewItem(target: self, selector: Selector("dismissViewController"), image: UIImage(named: "Cross")!)
+        cornerView!.cornerViewItem = CornerViewItem(target: self, selector: Selector("dismissViewController"), image: UIImage(named: "Cross")!, tintColor: UIColor(rgba: "#FD2C2C"))
         view.addSubview(cornerView!)
 
         tableView = UITableView()
@@ -161,22 +158,20 @@ class InfoViewController: UIViewController, UIViewControllerTransitioningDelegat
         case .Title:
             let textModel = model as! InfoTableViewTextCellModel
             let frame = textModel.text!.boundingRectWithSize(
-                CGSize(width: 480.0, height: CGFloat.max),
-                options: NSStringDrawingOptions.UsesLineFragmentOrigin,
+                CGSize(width: view.frame.width - 288, height: .max),
+                options: .UsesLineFragmentOrigin,
                 attributes: titleAttributes, context: nil)
             return frame.height + 30.0
         case .Content:
             let textModel = model as! InfoTableViewTextCellModel
             let frame = textModel.text!.boundingRectWithSize(
-                CGSize(width: 480.0, height: CGFloat.max),
-                options: NSStringDrawingOptions.UsesLineFragmentOrigin,
+                CGSize(width: view.frame.width - 288, height: .max),
+                options: .UsesLineFragmentOrigin,
                 attributes: contentAttributes, context: nil)
             return frame.height + 30.0
         case .Image:
             let imageModel = model as! InfoTableViewImageCellModel
             return imageModel.image!.size.height + 30.0
-        default:
-            return 0
         }
     }
     

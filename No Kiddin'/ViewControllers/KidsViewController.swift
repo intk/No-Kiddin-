@@ -37,7 +37,7 @@ class KidsViewController: UIViewController, UICollectionViewDataSource, UICollec
         view.addSubview(collectionView!)
         
         cornerView = CornerView()
-        cornerView!.cornerViewItem = CornerViewItem(target: self, selector: Selector("presentInfoViewController"), image: UIImage(named: "Info")!)
+        cornerView!.cornerViewItem = CornerViewItem(target: self, selector: Selector("presentInfoViewController"), image: UIImage(named: "Info")!, tintColor: UIColor(rgba: "#009CFF"))
         view.addSubview(cornerView!)
         
         viewModel = KidViewModel(viewController: self)
@@ -76,7 +76,7 @@ class KidsViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     internal func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! KidCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! KidCollectionViewCell
         
         cell.model = items[indexPath.item]
         

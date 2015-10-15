@@ -17,9 +17,10 @@ class DetailViewModel {
         let defaultAttributes = [NSFontAttributeName: UIFont(name: "Toekomst-Medium", size: 14.0)!]
         let bookAttributes = [NSFontAttributeName: UIFont(name: "Toekomst-Book", size: 14.0)!, NSForegroundColorAttributeName: UIColor(white: 1, alpha: 0.7)]
         
-        let attributedString = NSMutableAttributedString(string: "\(model.kidName!) over \(model.name!)", attributes: defaultAttributes)
+        let ageString = "(\(model.kidAge!))"
+        let attributedString = NSMutableAttributedString(string: "\(model.kidName!) \(ageString) over \(model.name!)", attributes: defaultAttributes)
         
-        let bookRange = NSMakeRange(count(model.kidName!) + 1, 4)
+        let bookRange = NSMakeRange(model.kidName!.characters.count + ageString.characters.count + 2, 4)
         attributedString.addAttributes(bookAttributes, range: bookRange)
         
         viewController.titleLabel?.attributedText = attributedString
