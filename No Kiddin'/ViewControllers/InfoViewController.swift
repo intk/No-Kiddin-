@@ -23,7 +23,7 @@ class AttributedTableViewCell: UITableViewCell {
         textView!.selectable = true
         textView!.scrollEnabled = false
         textView!.dataDetectorTypes = .Link
-        textView!.linkTextAttributes = [NSForegroundColorAttributeName: UIColor(rgba: "#999999")]
+        textView!.linkTextAttributes = [NSForegroundColorAttributeName: UIColor(rgba: "#222222")]
         textView!.textContainerInset = UIEdgeInsetsZero
         textView!.textContainer.lineFragmentPadding = 0
         textView!.backgroundColor = UIColor.clearColor()
@@ -78,7 +78,8 @@ class InfoViewController: UIViewController, UIViewControllerTransitioningDelegat
     private lazy var titleAttributes: [String: AnyObject!] = {
         return [
             NSFontAttributeName: UIFont(name: "Toekomst-Book", size: 18.0)!,
-            NSForegroundColorAttributeName: UIColor(rgba: "#009CFF")
+            NSForegroundColorAttributeName: UIColor(rgba: "#009CFF"),
+            NSObliquenessAttributeName: 0.2
         ]
     }()
     
@@ -87,7 +88,8 @@ class InfoViewController: UIViewController, UIViewControllerTransitioningDelegat
         paragraphStyle.lineSpacing = 7
         
         return [
-            NSFontAttributeName: UIFont(name: "Toekomst-Book", size: 18.0)!,
+            NSFontAttributeName: UIFont(name: "Toekomst-Book", size: 18.0),
+            NSObliquenessAttributeName: 0.2,
             NSParagraphStyleAttributeName: paragraphStyle,
             NSForegroundColorAttributeName: UIColor(rgba: "#555555")
         ]
