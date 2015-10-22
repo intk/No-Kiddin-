@@ -79,7 +79,6 @@ class InfoViewController: UIViewController, UIViewControllerTransitioningDelegat
         return [
             NSFontAttributeName: UIFont(name: "Toekomst-Book", size: 18.0)!,
             NSForegroundColorAttributeName: UIColor(rgba: "#009CFF"),
-            NSObliquenessAttributeName: 0.2
         ]
     }()
     
@@ -89,7 +88,6 @@ class InfoViewController: UIViewController, UIViewControllerTransitioningDelegat
         
         return [
             NSFontAttributeName: UIFont(name: "Toekomst-Book", size: 18.0),
-            NSObliquenessAttributeName: 0.2,
             NSParagraphStyleAttributeName: paragraphStyle,
             NSForegroundColorAttributeName: UIColor(rgba: "#555555")
         ]

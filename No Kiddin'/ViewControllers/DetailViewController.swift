@@ -69,6 +69,10 @@ class DetailViewController: UIViewController, UIViewControllerTransitioningDeleg
         moviePlayer?.viewWillLayoutSubviews()
     }
     
+    override func viewDidLayoutSubviews() {
+        moviePlayer?.viewDidLayoutSubviews()
+    }
+    
     internal func playVideoFromUrl(url: NSURL) -> MPMoviePlayerController {
         moviePlayer = MoviePlayerController(contentURL: url)
         moviePlayer!.model = model!

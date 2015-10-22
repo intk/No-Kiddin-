@@ -69,7 +69,9 @@ class MoviePlayerController: MPMoviePlayerController, JCTileSource, UIScrollView
         }
         
         displayAdjustmentView?.frame = contentFrame
-        
+    }
+    
+    internal func viewDidLayoutSubviews() {
         adjustImage()
     }
     
