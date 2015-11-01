@@ -252,7 +252,7 @@ static NSString *const kText = @"kText";
 
 - (void)viewWillLayoutSubviews {
     if (self.subtitleLabel) {
-        self.subtitleLabel.frame = CGRectMake(35, self.view.frame.size.height - 300 - 35 - 40.0, self.view.frame.size.width - 70, 300);
+        self.subtitleLabel.frame = CGRectMake(35, self.view.frame.size.height - 300 - 78, self.view.frame.size.width - 70, 300);
     }
 }
 

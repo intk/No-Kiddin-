@@ -12,11 +12,14 @@ class MoviePlayerController: MPMoviePlayerController, JCTileSource, UIScrollView
     
     private var overlayScrollView: JCTiledScrollView?
     
+    private var playbackView: PlaybackView?
     private var displayAdjustmentView: UIView?
     
     private var artSize: CGSize?
     internal var model: Art? {
         didSet {
+            controlStyle = .None
+            
             artSize = CGSize(width: floor(model!.artSize!.width / 4) - 2.0, height: floor(model!.artSize!.height / 4) - 2.0)
             overlayScrollView = JCTiledScrollView(frame: .zero, contentSize: artSize!)
             overlayScrollView!.scrollView!.backgroundColor = UIColor.blackColor()
@@ -27,6 +30,9 @@ class MoviePlayerController: MPMoviePlayerController, JCTileSource, UIScrollView
             view.addSubview(overlayScrollView!)
             
             overlayScrollView!.scrollView!.contentOffset = CGPoint(x: artSize!.height / 2.0, y: artSize!.width / 2.0)
+            
+            playbackView = PlaybackView(moviePlayerController: self)
+            view.addSubview(playbackView!)
             
             displayAdjustmentView = UIView()
             displayAdjustmentView!.backgroundColor = UIColor(white: 0, alpha: 0.1)
@@ -54,19 +60,13 @@ class MoviePlayerController: MPMoviePlayerController, JCTileSource, UIScrollView
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
 
-        let swipableViewHeight: CGFloat = 40.0
-        let contentFrame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - swipableViewHeight)
+        let contentFrame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         
         if let overlayScrollView = overlayScrollView {
             overlayScrollView.frame = contentFrame
         }
         
-        for var i = 0; i < view.subviews.count; i++ {
-            if view.subviews[i].isKindOfClass(NSClassFromString("MPSwipableView")!) {
-                let swipableView = self.view.subviews[i]
-                swipableView.frame = CGRect(x: 0, y: self.view.frame.height - swipableViewHeight, width: self.view.frame.width, height: swipableViewHeight)
-            }
-        }
+        playbackView?.frame = CGRect(x: 34, y: view.frame.height - 20 - 44, width: view.frame.width - (34 * 2), height: 44)
         
         displayAdjustmentView?.frame = contentFrame
     }

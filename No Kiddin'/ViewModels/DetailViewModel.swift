@@ -21,7 +21,7 @@ class DetailViewModel {
             NSFontAttributeName: UIFont(name: "Toekomst-Medium", size: 14.0)!,
         ]
         
-        let ageString = "(\(model.kidAge!))"
+        let ageString = "(\(model.kidAge!)jr)"
         let attributedString = NSMutableAttributedString(string: "\(model.kidName!) \(ageString) over \(model.name!)", attributes: defaultAttributes)
         
         let bookRange = NSMakeRange(model.kidName!.characters.count + ageString.characters.count + 2, 4)

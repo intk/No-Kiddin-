@@ -56,7 +56,7 @@ class KidViewModel {
         storm.kidTintColor = UIColor(rgba: "#da759e")
         storm.kidName = "Storm"
         storm.kidAge = 7
-        storm.artSize = CGSize(width: 2687, height: 2097)
+        storm.artSize = CGSize(width: 2686, height: 2096)
         items.append(storm)
         
         let puk = Art()
@@ -74,7 +74,7 @@ class KidViewModel {
         guusje.kidTintColor = UIColor(rgba: "#ff8d37")
         guusje.kidName = "Guusje"
         guusje.kidAge = 10
-        guusje.artSize = CGSize(width: 3123, height: 2801)
+        guusje.artSize = CGSize(width: 3122, height: 2800)
         items.append(guusje)
         
         let kay = Art()
@@ -90,7 +90,7 @@ class KidViewModel {
         david.kidTintColor = UIColor(rgba: "#adc0ff")
         david.kidName = "David"
         david.kidAge = 11
-        david.artSize = CGSize(width: 2930, height: 2941)
+        david.artSize = CGSize(width: 2930, height: 2940)
         items.append(david)
         
         let roel = Art()
@@ -115,7 +115,7 @@ class KidViewModel {
         sam.kidTintColor = UIColor(rgba: "#adc0ff")
         sam.kidName = "Sam"
         sam.kidAge = 13
-        sam.artSize = CGSize(width: 2512, height: 3353)
+        sam.artSize = CGSize(width: 2512, height: 3352)
         items.append(sam)
         
         let isabel = Art()
@@ -124,7 +124,7 @@ class KidViewModel {
         isabel.kidName = "Isabel"
         isabel.kidAge = 14
         isabel.displayMode = .Dark
-        isabel.artSize = CGSize(width: 3570, height: 2661)
+        isabel.artSize = CGSize(width: 3570, height: 2660)
         items.append(isabel)
         
         let nina = Art()
@@ -132,7 +132,7 @@ class KidViewModel {
         nina.kidTintColor = UIColor(rgba: "#c1c5c6")
         nina.kidName = "Nina"
         nina.kidAge = 14
-        nina.artSize = CGSize(width: 2248, height: 3267)
+        nina.artSize = CGSize(width: 2248, height: 3266)
         items.append(nina)
         
         let lieve = Art()
