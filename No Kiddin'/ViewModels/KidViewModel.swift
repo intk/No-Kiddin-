@@ -74,7 +74,7 @@ class KidViewModel {
         guusje.kidTintColor = UIColor(rgba: "#ff8d37")
         guusje.kidName = "Guusje"
         guusje.kidAge = 10
-        guusje.artSize = CGSize(width: 3122, height: 2800)
+        guusje.artSize = CGSize(width: 3122, height: 2879)
         items.append(guusje)
         
         let kay = Art()

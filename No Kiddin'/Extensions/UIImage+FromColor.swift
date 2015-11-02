@@ -1,5 +1,5 @@
 //
-//  UIImage+Color.swift
+//  UIImage+FromColor.swift
 //  No Kiddin'
 //
 //  Created by Sjors Snoeren on 01-11-15.

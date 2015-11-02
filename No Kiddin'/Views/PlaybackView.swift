@@ -9,6 +9,22 @@
 import UIKit
 import MediaPlayer
 
+extension UIView {
+    
+    func recursiveRemoveAllAnimations() {
+        recursiveRemoveAllAnimations(self)
+    }
+    
+    func recursiveRemoveAllAnimations(view: UIView) {
+        view.layer.removeAllAnimations()
+        
+        for subview in view.subviews {
+            recursiveRemoveAllAnimations(subview)
+        }
+    }
+    
+}
+
 extension MPVolumeView {
     
     func slider() -> UISlider {
@@ -25,9 +41,11 @@ extension MPVolumeView {
 class PlaybackView: UIView {
     
     private var moviePlayerController: MPMoviePlayerController
+    private var isScrubbing = false
     
     private var playButton: UIButton?
     private var playSlider: UISlider?
+    private var playSliderUpdateTimer: NSTimer?
     
     private var volumeButton: UIButton?
     private var volumeView: MPVolumeView?
@@ -45,7 +63,8 @@ class PlaybackView: UIView {
         addSubview(playButton!)
         
         playSlider = UISlider()
-        playSlider!.addTarget(self, action: Selector("playSliderDidChange:"), forControlEvents: .ValueChanged)
+        playSlider!.addTarget(self, action: Selector("playSliderDidStartScrubbing:"), forControlEvents: .TouchDragInside)
+        playSlider!.continuous = false
         adjustSliderAppearance(playSlider!)
         addSubview(playSlider!)
         
@@ -68,26 +87,22 @@ class PlaybackView: UIView {
     }
     
     internal func adjustSliderAppearance(slider: UISlider) {
-        slider.setMaximumTrackImage(UIImage.imageWithColor(UIColor(white: 1.0, alpha: 0.5), size: CGSize(width: 3, height: 3)), forState: .Normal)
+        slider.setMaximumTrackImage(UIImage.imageWithColor(UIColor(white: 1.0, alpha: 0.3), size: CGSize(width: 3, height: 3)), forState: .Normal)
         slider.setMinimumTrackImage(UIImage.imageWithColor(UIColor.whiteColor(), size: CGSize(width: 3, height: 3)), forState: .Normal)
         slider.setThumbImage(UIImage.imageWithColor(UIColor.clearColor(), size: CGSize(width: 6, height: 6)), forState: .Normal)
-        
-        let longPress = UILongPressGestureRecognizer(target: slider, action: Selector("tapAndSlide:"))
-        longPress.minimumPressDuration = 0
-        slider.addGestureRecognizer(longPress)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let playButtonWidth: CGFloat = 32.0
+        let playButtonWidth: CGFloat = 30.0
         let volumeButtonWidth: CGFloat = 44.0
-        let seperationSpace: CGFloat = 44.0
+        let seperationSpace: CGFloat = 34.0
         
         let remainingSliderWidth: CGFloat = frame.width - playButtonWidth - volumeButtonWidth - seperationSpace
         
         if let playButton = playButton {
-            playButton.frame = CGRect(x: -12.0, y: 0, width: playButtonWidth + 12.0, height: frame.height)
+            playButton.frame = CGRect(x: -14.0, y: 0, width: playButtonWidth + 14.0, height: frame.height)
             
             if let playSlider = playSlider {
                 playSlider.frame = CGRect(x: playButton.frame.origin.x + playButton.frame.width, y: 0, width: (remainingSliderWidth / 3) * 2, height: frame.height)
@@ -95,11 +110,22 @@ class PlaybackView: UIView {
                 if let volumeButton = volumeButton {
                     volumeButton.frame = CGRect(x: playSlider.frame.origin.x + playSlider.frame.width + seperationSpace, y: 0, width: volumeButtonWidth, height: frame.height)
                     
-                    volumeView?.layer.removeAllAnimations()
-                    volumeView?.frame = CGRect(x: volumeButton.frame.origin.x + volumeButton.frame.width, y: 12, width: (remainingSliderWidth / 3), height: frame.height)
+                    if let volumeView = volumeView {
+                        volumeView.recursiveRemoveAllAnimations()
+                        volumeView.frame = CGRect(x: volumeButton.frame.origin.x + volumeButton.frame.width, y: 12, width: (remainingSliderWidth / 3), height: frame.height)
+                    }
                 }
             }
         }
+    }
+    
+    internal func playSliderShouldUpdate() {
+        let progress: Float = Float(moviePlayerController.currentPlaybackTime / moviePlayerController.duration)
+        
+        if !isScrubbing {
+            self.playSlider?.value = progress
+        }
+        isScrubbing = false
     }
     
     // MARK: - Events
@@ -114,13 +140,13 @@ class PlaybackView: UIView {
         }
     }
     
-    internal func playSliderShouldUpdate() {
-        let progress: Float = Float(moviePlayerController.currentPlaybackTime / moviePlayerController.duration)
-        playSlider?.value = progress
-    }
-    
-    internal func playSliderDidChange(sender: UISlider) {
+    internal func playSliderDidStartScrubbing(sender: UISlider) {
+        if moviePlayerController.playbackState == .Stopped {
+            moviePlayerController.play()
+        }
+        
         moviePlayerController.currentPlaybackTime = (Double(sender.value) * moviePlayerController.duration)
+        isScrubbing = true
     }
     
     internal func volumeButtonDidTouchUpInside(sender: UIButton) {
@@ -140,10 +166,10 @@ class PlaybackView: UIView {
     internal func volumeViewDidChange(sender: UISlider) {
         if sender.value == 0 {
             volumeButton!.setImage(UIImage(named: "VolumeMute"), forState: .Normal)
-        } else if sender.value == 1 {
-            volumeButton!.setImage(UIImage(named: "Volume100"), forState: .Normal)
-        } else {
+        } else if sender.value < 0.5 {
             volumeButton!.setImage(UIImage(named: "Volume50"), forState: .Normal)
+        } else {
+            volumeButton!.setImage(UIImage(named: "Volume100"), forState: .Normal)
         }
     }
     
