@@ -20,7 +20,7 @@ class MoviePlayerController: MPMoviePlayerController, JCTileSource, UIScrollView
         didSet {
             controlStyle = .None
             
-            artSize = CGSize(width: floor(model!.artSize!.width / 4) - 2.0, height: floor(model!.artSize!.height / 4) - 2.0)
+            artSize = CGSize(width: floor(model!.artSize!.width / 4), height: floor(model!.artSize!.height / 4))
             overlayScrollView = JCTiledScrollView(frame: .zero, contentSize: artSize!)
             overlayScrollView!.scrollView!.backgroundColor = UIColor.blackColor()
             overlayScrollView!.dataSource = self

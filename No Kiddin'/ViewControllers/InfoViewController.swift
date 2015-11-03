@@ -56,7 +56,7 @@ class ImageTableViewCell: UITableViewCell {
         backgroundColor = UIColor.clearColor()
         selectionStyle = .None
         
-        imageView?.contentMode = .TopLeft
+        imageView?.contentMode = .Left
     }
     
     required init(coder aDecoder: NSCoder) {

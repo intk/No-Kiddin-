@@ -9,25 +9,62 @@
 import UIKit
 import MediaPlayer
 
-extension UIView {
+protocol PlaybackViewTimelineSliderDelegate {
     
-    func recursiveRemoveAllAnimations() {
-        recursiveRemoveAllAnimations(self)
+    func playbackViewTimelineSliderDidBeganTouches(playbackViewTimelineSlider: PlaybackViewTimelineSlider)
+    func playbackViewTimelineSliderDidEndTouches(playbackViewTimelineSlider: PlaybackViewTimelineSlider)
+    
+}
+
+class TrackImage: UIImage {
+    
+    class func minimumImage() -> UIImage {
+        return UIImage(named: "MinimumSliderTrack")!.resizableImageWithCapInsets(UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10), resizingMode: UIImageResizingMode.Stretch)
     }
     
-    func recursiveRemoveAllAnimations(view: UIView) {
-        view.layer.removeAllAnimations()
-        
-        for subview in view.subviews {
-            recursiveRemoveAllAnimations(subview)
-        }
+    class func maximumImage() -> UIImage {
+        return UIImage(named: "MaximumSliderTrack")!.resizableImageWithCapInsets(UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10), resizingMode: UIImageResizingMode.Stretch)
     }
     
 }
 
-extension MPVolumeView {
+class PlaybackViewSlider: UISlider {
     
-    func slider() -> UISlider {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setMinimumTrackImage(TrackImage.minimumImage(), forState: .Normal)
+        setMaximumTrackImage(TrackImage.maximumImage(), forState: .Normal)
+        setThumbImage(UIImage(named: "Circle"), forState: .Normal)
+        setThumbImage(UIImage(named: "CircleTouch"), forState: .Highlighted)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+
+class PlaybackViewTimelineSlider: PlaybackViewSlider {
+    
+    internal var delegate: PlaybackViewTimelineSliderDelegate?
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        super.touchesBegan(touches, withEvent: event)
+        delegate?.playbackViewTimelineSliderDidBeganTouches(self)
+    }
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        super.touchesEnded(touches, withEvent: event)
+        delegate?.playbackViewTimelineSliderDidEndTouches(self)
+    }
+    
+}
+
+class PlaybackViewVolumeView: MPVolumeView {
+    
+    internal var slider: UISlider {
         for view in subviews {
             if view is UISlider {
                 return view as! UISlider
@@ -36,60 +73,81 @@ extension MPVolumeView {
         return UISlider()
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setMinimumVolumeSliderImage(TrackImage.minimumImage(), forState: .Normal)
+        setMaximumVolumeSliderImage(TrackImage.maximumImage(), forState: .Normal)
+        setVolumeThumbImage(UIImage(named: "Circle"), forState: .Normal)
+        setVolumeThumbImage(UIImage(named: "CircleTouch"), forState: .Highlighted)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        recursiveRemoveAllAnimationsForView(self)
+    }
+    
+    private func recursiveRemoveAllAnimationsForView(view: UIView) {
+        view.layer.removeAllAnimations()
+        
+        for subview in view.subviews {
+            recursiveRemoveAllAnimationsForView(subview)
+        }
+    }
+    
 }
 
-class PlaybackView: UIView {
+class PlaybackView: UIView, PlaybackViewTimelineSliderDelegate {
     
     private var moviePlayerController: MPMoviePlayerController
-    private var isScrubbing = false
     
     private var playButton: UIButton?
-    private var playSlider: UISlider?
-    private var playSliderUpdateTimer: NSTimer?
+    private var timelineSlider: PlaybackViewTimelineSlider?
+    private var timelineSliderUpdateTimer: NSTimer?
     
     private var volumeButton: UIButton?
-    private var volumeView: MPVolumeView?
+    private var volumeView: PlaybackViewVolumeView?
     
     private var previousVolume: Float?
     
     init(moviePlayerController: MPMoviePlayerController) {
         self.moviePlayerController = moviePlayerController
-        
+
         super.init(frame: .zero)
-        
+
         playButton = UIButton(type: .Custom)
         playButton!.setImage(UIImage(named: "Pause"), forState: .Normal)
         playButton!.addTarget(self, action: Selector("playButtonDidTouchUpInside:"), forControlEvents: .TouchUpInside)
         addSubview(playButton!)
         
-        playSlider = UISlider()
-        playSlider!.addTarget(self, action: Selector("playSliderDidStartScrubbing:"), forControlEvents: .TouchDragInside)
-        playSlider!.continuous = false
-        adjustSliderAppearance(playSlider!)
-        addSubview(playSlider!)
+        timelineSlider = PlaybackViewTimelineSlider()
+        timelineSlider!.delegate = self
+        timelineSlider!.continuous = false
+        addSubview(timelineSlider!)
         
         volumeButton = UIButton(type: .Custom)
         volumeButton!.contentHorizontalAlignment = .Left
         volumeButton!.addTarget(self, action: Selector("volumeButtonDidTouchUpInside:"), forControlEvents: .TouchUpInside)
         addSubview(volumeButton!)
         
-        volumeView = MPVolumeView()
+        volumeView = PlaybackViewVolumeView()
         volumeView!.showsRouteButton = false
-        volumeView!.slider().addTarget(self, action: Selector("volumeViewDidChange:"), forControlEvents: .ValueChanged)
-        adjustSliderAppearance(volumeView!.slider())
+        volumeView!.slider.addTarget(self, action: Selector("volumeViewDidChange:"), forControlEvents: .ValueChanged)
         addSubview(volumeView!)
         
-        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("playSliderShouldUpdate"), userInfo: nil, repeats: true)
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: Selector("moviePlayerDidChangeState:"), name: MPMoviePlayerPlaybackStateDidChangeNotification, object: moviePlayerController)
+        
+        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("timelineSliderShouldUpdate"), userInfo: nil, repeats: true)
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    internal func adjustSliderAppearance(slider: UISlider) {
-        slider.setMaximumTrackImage(UIImage.imageWithColor(UIColor(white: 1.0, alpha: 0.3), size: CGSize(width: 3, height: 3)), forState: .Normal)
-        slider.setMinimumTrackImage(UIImage.imageWithColor(UIColor.whiteColor(), size: CGSize(width: 3, height: 3)), forState: .Normal)
-        slider.setThumbImage(UIImage.imageWithColor(UIColor.clearColor(), size: CGSize(width: 6, height: 6)), forState: .Normal)
     }
     
     override func layoutSubviews() {
@@ -98,34 +156,52 @@ class PlaybackView: UIView {
         let playButtonWidth: CGFloat = 30.0
         let volumeButtonWidth: CGFloat = 44.0
         let seperationSpace: CGFloat = 34.0
+        let sliderInnerSpace: CGFloat = 10.0
         
         let remainingSliderWidth: CGFloat = frame.width - playButtonWidth - volumeButtonWidth - seperationSpace
         
         if let playButton = playButton {
-            playButton.frame = CGRect(x: -14.0, y: 0, width: playButtonWidth + 14.0, height: frame.height)
+            playButton.frame = CGRect(x: -15.0, y: 0, width: playButtonWidth + 15.0, height: frame.height)
             
-            if let playSlider = playSlider {
-                playSlider.frame = CGRect(x: playButton.frame.origin.x + playButton.frame.width, y: 0, width: (remainingSliderWidth / 3) * 2, height: frame.height)
+            if let timelineSlider = timelineSlider {
+                timelineSlider.frame = CGRect(x: playButton.frame.origin.x + playButton.frame.width - sliderInnerSpace, y: 0, width: (remainingSliderWidth / 3) * 2 + (2 * sliderInnerSpace), height: frame.height)
                 
                 if let volumeButton = volumeButton {
-                    volumeButton.frame = CGRect(x: playSlider.frame.origin.x + playSlider.frame.width + seperationSpace, y: 0, width: volumeButtonWidth, height: frame.height)
+                    volumeButton.frame = CGRect(x: timelineSlider.frame.origin.x + timelineSlider.frame.width + seperationSpace - sliderInnerSpace, y: 0, width: volumeButtonWidth, height: frame.height)
                     
                     if let volumeView = volumeView {
-                        volumeView.recursiveRemoveAllAnimations()
-                        volumeView.frame = CGRect(x: volumeButton.frame.origin.x + volumeButton.frame.width, y: 12, width: (remainingSliderWidth / 3), height: frame.height)
+                        volumeView.frame = CGRect(x: volumeButton.frame.origin.x + volumeButton.frame.width - sliderInnerSpace, y: 12, width: (remainingSliderWidth / 3) + (2 * sliderInnerSpace), height: frame.height)
                     }
                 }
             }
         }
     }
     
-    internal func playSliderShouldUpdate() {
-        let progress: Float = Float(moviePlayerController.currentPlaybackTime / moviePlayerController.duration)
-        
-        if !isScrubbing {
-            self.playSlider?.value = progress
+    internal func timelineSliderShouldUpdate() {
+        if moviePlayerController.playbackState == .Playing {
+            self.timelineSlider?.value = Float(moviePlayerController.currentPlaybackTime / moviePlayerController.duration)
         }
-        isScrubbing = false
+    }
+    
+    internal func moviePlayerDidChangeState(notification: NSNotification) {
+        let moviePlayerController = notification.object as! MPMoviePlayerController
+        
+        if moviePlayerController.playbackState == .Paused {
+            playButton?.setImage(UIImage(named: "Play"), forState: .Normal)
+        } else {
+            playButton?.setImage(UIImage(named: "Pause"), forState: .Normal)
+        }
+    }
+    
+    // MARK: - PlaybackViewTimelineSliderDelegate
+    
+    internal func playbackViewTimelineSliderDidBeganTouches(playbackViewTimelineSlider: PlaybackViewTimelineSlider) {
+        moviePlayerController.pause()
+    }
+    
+    internal func playbackViewTimelineSliderDidEndTouches(playbackViewTimelineSlider: PlaybackViewTimelineSlider) {
+        moviePlayerController.play()
+        moviePlayerController.currentPlaybackTime = (Double(playbackViewTimelineSlider.value) * moviePlayerController.duration)
     }
     
     // MARK: - Events
@@ -133,24 +209,15 @@ class PlaybackView: UIView {
     internal func playButtonDidTouchUpInside(sender: UIButton) {
         if moviePlayerController.playbackState != .Paused {
             moviePlayerController.pause()
-            sender.setImage(UIImage(named: "Play"), forState: .Normal)
         } else {
             moviePlayerController.play()
-            sender.setImage(UIImage(named: "Pause"), forState: .Normal)
         }
     }
     
-    internal func playSliderDidStartScrubbing(sender: UISlider) {
-        if moviePlayerController.playbackState == .Stopped {
-            moviePlayerController.play()
-        }
-        
-        moviePlayerController.currentPlaybackTime = (Double(sender.value) * moviePlayerController.duration)
-        isScrubbing = true
-    }
+    // MARK: - Volume Button
     
     internal func volumeButtonDidTouchUpInside(sender: UIButton) {
-        let slider = volumeView!.slider()
+        let slider = volumeView!.slider
         if slider.value > 0 {
             previousVolume = slider.value
             slider.value = 0.0
