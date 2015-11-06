@@ -55,8 +55,6 @@ class ImageTableViewCell: UITableViewCell {
         
         backgroundColor = UIColor.clearColor()
         selectionStyle = .None
-        
-        imageView?.contentMode = .Left
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -66,7 +64,7 @@ class ImageTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        imageView?.frame = CGRect(x: 144, y: 0, width: frame.width - 288, height: frame.height - 30.0)
+        imageView?.frame = CGRect(x: 144, y: 0, width: 480, height: frame.height - 30.0)
     }
     
 }
@@ -171,7 +169,7 @@ class InfoViewController: UIViewController, UIViewControllerTransitioningDelegat
             return frame.height + 30.0
         case .Image:
             let imageModel = model as! InfoTableViewImageCellModel
-            return imageModel.image!.size.height + 30.0
+            return (imageModel.image!.size.height / (imageModel.image!.size.width / 480)) + 30.0
         }
     }
     
